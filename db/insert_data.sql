@@ -35,3 +35,8 @@ INSERT INTO toidu_app.recipe (id, users_id, name, description, instructions, pub
 
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 4);
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 3);
+
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
