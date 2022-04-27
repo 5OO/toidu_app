@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-04-27 11:41:08.8
+-- Last modification date: 2022-04-27 12:58:07.89
 
 -- tables
 -- Table: allowed_measure_unit
@@ -7,6 +7,8 @@ CREATE TABLE toidu_app.allowed_measure_unit (
                                                 id serial  NOT NULL,
                                                 ingredient_id int  NOT NULL,
                                                 measure_unit_id int  NOT NULL,
+                                                conversion_multiplier int  NOT NULL,
+                                                onversion_description varchar(255)  NULL,
                                                 CONSTRAINT allowed_measure_unit_unique UNIQUE (ingredient_id, measure_unit_id) NOT DEFERRABLE  INITIALLY IMMEDIATE,
                                                 CONSTRAINT allowed_measure_unit_pk PRIMARY KEY (id)
 );
@@ -76,8 +78,6 @@ CREATE TABLE toidu_app.ingredient_plan (
 CREATE TABLE toidu_app.measure_unit (
                                         id serial  NOT NULL,
                                         name varchar(4)  NOT NULL,
-                                        description varchar(255)  NULL,
-                                        conversion_multiplier int  NOT NULL,
                                         CONSTRAINT measure_unit_unique UNIQUE (name) NOT DEFERRABLE  INITIALLY IMMEDIATE,
                                         CONSTRAINT measure_unit_pk PRIMARY KEY (id)
 );
