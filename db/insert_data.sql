@@ -30,3 +30,8 @@ INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'eine');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'lõunaoode');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'õhtuoode');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'ööoode');
+
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
