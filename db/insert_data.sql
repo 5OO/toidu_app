@@ -20,3 +20,13 @@ INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mob
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 3, 'Jaan', 'Mürk', 'Kihvti põik 12, Tallinn', '+372 55 000 99', null);
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 4, 'Rain', 'Külaline', 'Hotelli 2, Tallinn', '+372 53 789 789', null);
 
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'supp');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'praad');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'magustoit');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'hommikusöök');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'õhtusöök');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'lõunasöök');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'eine');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'lõunaoode');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'õhtuoode');
+INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'ööoode');
