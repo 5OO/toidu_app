@@ -2,7 +2,7 @@
 -- Last modification date: 2022-04-27 07:06:13.442
 
 -- tables
--- Table: allowed_measure_unit
+-- Table: allowed_measure_unitingredient_plan
 CREATE TABLE allowed_measure_unit (
     id serial  NOT NULL,
     ingredient_id int  NOT NULL,
