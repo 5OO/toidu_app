@@ -38,7 +38,7 @@ CREATE TABLE toidu_app.day_plan (
 CREATE TABLE toidu_app.ingredient (
                                       id serial  NOT NULL,
                                       name varchar(255)  NOT NULL,
-                                      description varchar(255)  NOT NULL,
+                                      description varchar(255),
                                       energy decimal(6,1)  NOT NULL,
                                       carbs decimal(6,1)  NOT NULL,
                                       fat decimal(6,1)  NOT NULL,

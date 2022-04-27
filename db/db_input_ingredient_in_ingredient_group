@@ -1,0 +1,5 @@
+INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 1, 5);
+INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 2, 6);
+INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 3, 3);
+INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 4, 9);
+INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 5, 7);
