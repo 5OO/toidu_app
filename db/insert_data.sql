@@ -30,3 +30,5 @@ INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'eine');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'lõunaoode');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'õhtuoode');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'ööoode');
+
+INSERT INTO toidu_app.recipe (id, users_id, name, description, instructions, public_recipe) VALUES (DEFAULT, 3, 'Pankoogid', 'Õhukesed pannkoogid', null, true);
