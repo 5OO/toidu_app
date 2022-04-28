@@ -58,3 +58,8 @@ INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredi
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 3, 3);
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 4, 9);
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 5, 7);
+
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
