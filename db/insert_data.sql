@@ -63,3 +63,8 @@ INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
+
+INSERT INTO toidu_app.recipe (id, users_id, name, description, instructions, public_recipe) VALUES (DEFAULT, 3, 'Pankoogid', 'Õhukesed pannkoogid', null, true);
+
+INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 4);
+INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 3);
