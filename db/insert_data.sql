@@ -1,11 +1,14 @@
+-- ROLE TABLE CONTENTS
 INSERT INTO toidu_app.role (name) VALUES ('admin');
 INSERT INTO toidu_app.role (name) VALUES ('user');
 
+-- USERS TABLE CONTENTS
 INSERT INTO toidu_app.users (username, password) VALUES ('taavi', 'taavi123');
 INSERT INTO toidu_app.users (username, password) VALUES ('liisbet', 'liisbet123');
 INSERT INTO toidu_app.users (username, password) VALUES ('anna', 'anna123');
 INSERT INTO toidu_app.users (username, password) VALUES ('mattias', 'mattias123');
 
+-- ROLE TABLE CONTENTS
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 2);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 2, 1);
@@ -15,11 +18,13 @@ INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 3, 2);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 2);
 
+-- CONTACT TABLE CONTENTS
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 1, 'Taavi ', 'Tähenärija', 'Kullasepa 10, Tallinn', '+372 50 222 33', 'kk@toiduapp.ee');
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 2, 'Liisbet', 'Kuuäär', 'Saluvälja 20, Tallinn', '+372 51 111 88', 'he@toiduapp.ee');
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 3, 'Anna-Bella', 'Ääremaa', 'Kihvti põik 12, Tallinn', '+372 55 000 99', null);
 INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 4, 'Mattias', 'Üksväli', 'Hotelli 2, Tallinn', '+372 53 789 789', null);
 
+-- TAG TABLE CONTENTS
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'supp');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'praad');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'magustoit');
@@ -59,17 +64,33 @@ INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredi
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 4, 9);
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 5, 7);
 
+-- MEASURE_UNIT TABLE CONTENTS
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'g');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
 
+-- RECIPE TABLE CONTENTS
 INSERT INTO toidu_app.recipe (id, users_id, name, description, instructions, public_recipe) VALUES (DEFAULT, 3, 'Pankoogid', 'Õhukesed pannkoogid', null, true);
 
+-- RECIPE_TAGS TABLE CONTENTS
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 4);
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 3);
 
+-- RECIPE_INGREDIENT TABLE CONTENTS
 INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 3, 5, 100.00, '2022-04-28', null);
 INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 4, 3, 3.00, '2022-04-28', null);
 INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 5, 1, 75.00, '2022-04-28', null);
+
+-- ALLOWED_MEASURE_UNIT TABLE CONTENTS
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 3, 5, 1.025, 'teeme piima ml grammideks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 3, 4, 1025.000, 'muudame piima liitrid milliliitriteks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 4, 3, 60.000, '1 muna on 60 gr.');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 5, 1, 1.000, 'grammid jahu jaoks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 5, 2, 1000.000, 'teeme kg grammideks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 1, 1, 1.000, 'kartul grammides');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 1, 2, 1000.000, 'teeme kartuli kg grammideks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 2, 1, 1.000, 'banaan, grammides');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 2, 2, 1000.000, 'banaan, kilodes');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, onversion_description) VALUES (DEFAULT, 2, 3, 118.000, 'ühe banaani kaal');
