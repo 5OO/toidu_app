@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.user;
+package com.vali_it.toidu_app.domain.users.user;
 
 import javax.persistence.*;
 

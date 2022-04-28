@@ -1,7 +1,7 @@
-package com.vali_it.toidu_app.domain.userrole;
+package com.vali_it.toidu_app.domain.users.userrole;
 
-import com.vali_it.toidu_app.domain.role.Role;
-import com.vali_it.toidu_app.domain.user.User;
+import com.vali_it.toidu_app.domain.users.role.Role;
+import com.vali_it.toidu_app.domain.users.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

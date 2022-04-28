@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.role;
+package com.vali_it.toidu_app.domain.users.role;
 
 import lombok.Getter;
 import lombok.Setter;

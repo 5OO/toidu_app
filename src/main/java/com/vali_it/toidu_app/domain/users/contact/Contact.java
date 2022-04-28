@@ -1,6 +1,6 @@
-package com.vali_it.toidu_app.domain.contact;
+package com.vali_it.toidu_app.domain.users.contact;
 
-import com.vali_it.toidu_app.domain.user.User;
+import com.vali_it.toidu_app.domain.users.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
