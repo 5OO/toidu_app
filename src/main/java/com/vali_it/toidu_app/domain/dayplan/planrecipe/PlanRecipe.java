@@ -1,7 +1,7 @@
 package com.vali_it.toidu_app.domain.dayplan.planrecipe;
 
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlan;
-import com.vali_it.toidu_app.domain.recipe.Recipe;
+import com.vali_it.toidu_app.domain.recipe.recipe.Recipe;
 import lombok.Getter;
 import lombok.Setter;
 
