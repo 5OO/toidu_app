@@ -59,6 +59,7 @@ INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredi
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 4, 9);
 INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredient_group_id) VALUES (DEFAULT, 5, 7);
 
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'g');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
@@ -68,3 +69,7 @@ INSERT INTO toidu_app.recipe (id, users_id, name, description, instructions, pub
 
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 4);
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 3);
+
+INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 3, 5, 100.00, '2022-04-28', null);
+INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 4, 3, 3.00, '2022-04-28', null);
+INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 5, 1, 75.00, '2022-04-28', null);
