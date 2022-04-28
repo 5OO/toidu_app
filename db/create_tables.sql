@@ -8,7 +8,7 @@ CREATE TABLE toidu_app.allowed_measure_unit (
                                                 ingredient_id int  NOT NULL,
                                                 measure_unit_id int  NOT NULL,
                                                 conversion_multiplier decimal(8,3)  NOT NULL,
-                                                onversion_description varchar(255)  NULL,
+                                                conversion_description varchar(255)  NULL,
                                                 CONSTRAINT allowed_measure_unit_unique UNIQUE (ingredient_id, measure_unit_id) NOT DEFERRABLE  INITIALLY IMMEDIATE,
                                                 CONSTRAINT allowed_measure_unit_pk PRIMARY KEY (id)
 );

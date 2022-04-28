@@ -10,12 +10,8 @@ INSERT INTO toidu_app.users (username, password) VALUES ('mattias', 'mattias123'
 
 -- ROLE TABLE CONTENTS
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 1);
-INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 2);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 2, 1);
-INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 2, 2);
-INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 3, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 3, 2);
-INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 2);
 
 -- CONTACT TABLE CONTENTS
