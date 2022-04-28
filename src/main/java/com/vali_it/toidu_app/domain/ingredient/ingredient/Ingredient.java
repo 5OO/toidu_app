@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.ingredient;
+package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
 import lombok.Getter;
 import lombok.Setter;

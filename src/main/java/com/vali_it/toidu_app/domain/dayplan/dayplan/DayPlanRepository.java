@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.dayplan;
+package com.vali_it.toidu_app.domain.dayplan.dayplan;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

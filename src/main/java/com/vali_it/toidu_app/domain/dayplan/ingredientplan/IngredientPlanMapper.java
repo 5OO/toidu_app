@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.dayplan;
+package com.vali_it.toidu_app.domain.dayplan.ingredientplan;
 
 import org.mapstruct.*;
 
