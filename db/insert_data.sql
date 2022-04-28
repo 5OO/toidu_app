@@ -1,10 +1,10 @@
 INSERT INTO toidu_app.role (name) VALUES ('admin');
 INSERT INTO toidu_app.role (name) VALUES ('user');
 
-INSERT INTO toidu_app.users (username, password) VALUES ('karli', 'karli123');
-INSERT INTO toidu_app.users (username, password) VALUES ('henri', 'henri123');
-INSERT INTO toidu_app.users (username, password) VALUES ('jaan', 'jaan123');
-INSERT INTO toidu_app.users (username, password) VALUES ('rain', 'rain123');
+INSERT INTO toidu_app.users (username, password) VALUES ('taavi', 'taavi123');
+INSERT INTO toidu_app.users (username, password) VALUES ('liisbet', 'liisbet123');
+INSERT INTO toidu_app.users (username, password) VALUES ('anna', 'anna123');
+INSERT INTO toidu_app.users (username, password) VALUES ('mattias', 'mattias123');
 
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 1, 2);
@@ -15,10 +15,10 @@ INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 3, 2);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 1);
 INSERT INTO toidu_app.user_role (id, users_id, role_id) VALUES (DEFAULT, 4, 2);
 
-INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 1, 'Karli ', 'Kullasepp', 'Kullasepa 10, Tallinn', '+372 50 222 33', 'kk@toiduapp.ee');
-INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 2, 'Henri', 'Eessalu', 'Saluvälja 20, Tallinn', '+372 51 111 88', 'he@toiduapp.ee');
-INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 3, 'Jaan', 'Mürk', 'Kihvti põik 12, Tallinn', '+372 55 000 99', null);
-INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 4, 'Rain', 'Külaline', 'Hotelli 2, Tallinn', '+372 53 789 789', null);
+INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 1, 'Taavi ', 'Tähenärija', 'Kullasepa 10, Tallinn', '+372 50 222 33', 'kk@toiduapp.ee');
+INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 2, 'Liisbet', 'Kuuäär', 'Saluvälja 20, Tallinn', '+372 51 111 88', 'he@toiduapp.ee');
+INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 3, 'Anna-Bella', 'Ääremaa', 'Kihvti põik 12, Tallinn', '+372 55 000 99', null);
+INSERT INTO toidu_app.contact (id, users_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 4, 'Mattias', 'Üksväli', 'Hotelli 2, Tallinn', '+372 53 789 789', null);
 
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'supp');
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'praad');
