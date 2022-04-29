@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.validation;
 
 
+import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.infrastructure.exception.BusinessException;
 import com.vali_it.toidu_app.infrastructure.exception.DataNotFoundException;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,17 @@ public class ValidationService {
     public static final String WITHDRAW_OVER_LIMIT = "Raha väljavõtmise limiit on ületatud";
     public static final String INSUFFICIENT_FUNDS = "Kontol pole piisavalt vahendeid tehingu sooritamiseks";
     public static final String ISIKUKOOD_ALREADY_TAKEN = "Isikukood on kasutusel";
+
+    public void userExists(Optional<User> user) {
+        // sisse tuleb siia meetodisse Matrjoska optional
+
+        // Vaatame, kas Matrjoska optional on tühi
+        if (user.isEmpty()) {
+            // kui jah siis viskame ülesse vea
+            throw new BusinessException("Ei saa siseneda", "Siusesta õiged andmed või registreeri kasutaja");
+        }
+    }
+
 
 //    public void accountExists(Integer accountId, Optional<Account> account) {
 //        if (account.isEmpty()) {
