@@ -31,4 +31,7 @@ public class UserService {
         return user.get();   // TODO: 29.04.2022 Rain-le küsimus -   mida võetakse get-ga välja siit?
     }
 
+    public UserDto addNewUser(UserDto userDto) {
+        return null;
+    }
 }
