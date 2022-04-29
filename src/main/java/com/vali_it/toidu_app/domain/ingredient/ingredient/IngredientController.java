@@ -21,8 +21,8 @@ public class IngredientController {
         return ingredientService.getAllIngredients();
     }
 
-    @GetMapping("/find")
-    public List<IngredientDto> findIngredientByName(@RequestParam Integer id) {
-        return ingredientService.findIngredientById(id);
-    }
+//    @GetMapping("/find")
+//    public List<IngredientDto> findIngredientByName(@RequestParam Integer id) {
+//        return ingredientService.findIngredientById(id);
+//    }
 }
