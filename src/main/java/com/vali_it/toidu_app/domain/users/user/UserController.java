@@ -1,6 +1,6 @@
 package com.vali_it.toidu_app.domain.users.user;
 
-import com.vali_it.toidu_app.domain.users.contact.UserService;
+import com.vali_it.toidu_app.domain.users.user.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
