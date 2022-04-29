@@ -12,9 +12,18 @@ public class LogInService {
     @Resource
     private UserService userService;
 
+
     public LoginResponse loginRequest(LogInRequest request) {
+        LoginResponse loginResponse = new LoginResponse();
+
         User user = userService.getValidUser(request);
+        Integer userId = user.getId();
+
+        loginResponse.setUserId(userId);
+
+//        loginResponse.setUserRoleId(????);
+
         // useri abil leiad ülesse roleId
-        return null;
+        return loginResponse;
     }
 }
