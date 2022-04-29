@@ -21,7 +21,9 @@ public class UserService {
 
     public User getValidUser(LogInRequest request) {
         // saame Matrjoska Optional, Mille sees on matrjoska User
+
         Optional<User> user = userRepository.findByUsernameAndPassword(request.getUsername(), request.getPassword());
+
         // Anname meetodis kaasea Matrjoksa optional
         validationService.userExists(user);
 
