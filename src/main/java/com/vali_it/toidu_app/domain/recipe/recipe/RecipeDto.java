@@ -1,6 +1,5 @@
 package com.vali_it.toidu_app.domain.recipe.recipe;
 
-import com.vali_it.toidu_app.domain.users.user.UserDto;
 import lombok.Data;
 
 import java.io.Serializable;

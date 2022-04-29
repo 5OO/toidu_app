@@ -1,7 +1,6 @@
 package com.vali_it.toidu_app.domain.users.userrole;
 
 import com.vali_it.toidu_app.domain.users.role.RoleDto;
-import com.vali_it.toidu_app.domain.users.user.UserDto;
 import lombok.Data;
 
 import java.io.Serializable;
