@@ -16,9 +16,6 @@ public class RegisterService {
     public RegisterResponse registerNewCustomer(RegisterRequest request) {
         User user = userService.addNewUser(request);
         contactService.addNewContact(user, request);
-        // todo: loo user ja salvesta andmebaasi maha
-        // peale seda loo uus kontakt ja salvesta see maha
-        // tagasta userId
-        return new RegisterResponse(1);
+        return new RegisterResponse(user.getId());
     }
 }

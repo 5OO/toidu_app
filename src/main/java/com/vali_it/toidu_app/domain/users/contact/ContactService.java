@@ -15,7 +15,9 @@ public class ContactService {
     private ContactRepository contactRepository;
 
     public void addNewContact(User user, RegisterRequest request) {
-
+        Contact contact = contactMapper.toEntity(request);
+        contact.setUsers(user);
+        contactRepository.save(contact);
     }
 
 

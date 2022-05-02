@@ -1,6 +1,5 @@
 package com.vali_it.toidu_app.service.register;
 
-import com.vali_it.toidu_app.domain.users.user.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

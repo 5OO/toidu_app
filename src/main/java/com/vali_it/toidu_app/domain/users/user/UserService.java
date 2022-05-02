@@ -38,7 +38,6 @@ public class UserService {
 
     public User addNewUser(RegisterRequest request) {
         User user = userMapper.toEntity(request);
-
         String username = request.getUsername();
         boolean userExists = userRepository.existsByUsername(username);
         validationService.userNameAlreadyExists(username, userExists);
