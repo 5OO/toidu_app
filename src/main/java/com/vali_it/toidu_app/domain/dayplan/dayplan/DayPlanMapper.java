@@ -1,13 +1,14 @@
 package com.vali_it.toidu_app.domain.dayplan.dayplan;
 
+import com.vali_it.toidu_app.service.dayplan.DayPlanRequest;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface DayPlanMapper {
-    DayPlan dayPlanDtoToDayPlan(DayPlanDto dayPlanDto);
+    DayPlan dayPlanDtoToDayPlan(DayPlanRequest dayPlanRequest);
 
-    DayPlanDto dayPlanToDayPlanDto(DayPlan dayPlan);
+    DayPlanRequest dayPlanToDayPlanDto(DayPlan dayPlan);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateDayPlanFromDayPlanDto(DayPlanDto dayPlanDto, @MappingTarget DayPlan dayPlan);
+    void updateDayPlanFromDayPlanDto(DayPlanRequest dayPlanRequest, @MappingTarget DayPlan dayPlan);
 }
