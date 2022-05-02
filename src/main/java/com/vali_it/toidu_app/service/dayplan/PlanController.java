@@ -1,19 +1,23 @@
 package com.vali_it.toidu_app.service.dayplan;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/create")
 public class PlanController {
 
+    @Resource
+    private PlanService planService;
 
     @PostMapping
     @Operation(summary = "lisame uue päevaplaani")
-    public createDayPlan() {
-
+    public PlanResponse createDayPlan(@RequestBody PlanRequest planRequest) {
+        return planService.createNewDayPlan(planRequest);
     }
-    // creat new day plan
+
+    // lisa plaani mingi toiduaine (banaanI
+
 }
