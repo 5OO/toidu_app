@@ -29,6 +29,11 @@ public class ValidationService {
         }
     }
 
+    public void userNameAlreadyExists(String username) {
+        if (usernameE)
+
+    }
+
 
 //    public void accountExists(Integer accountId, Optional<Account> account) {
 //        if (account.isEmpty()) {

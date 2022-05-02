@@ -18,6 +18,10 @@ public class UserService {
     @Resource
     private ValidationService validationService;
 
+    @Resource
+    private UserMapper userMapper;
+
+
 
     public User getValidUser(LogInRequest request) {
         // saame Matrjoska Optional, Mille sees on matrjoska User
@@ -32,6 +36,11 @@ public class UserService {
     }
 
     public UserDto addNewUser(UserDto userDto) {
-        return null;
+        User user = userMapper.userDtoToUser(userDto);
+
+        boolean userExists = userRepository.existsByUsername(userDto.getUsername()); // TODO: 02.05.2022 Miks siin Dto sisse võtab. eelmisel real ma juba mappisin.
+        validationService.userNameAlreadyExists(userDto.getUsername());
+        userRepository.save(user);
+        return userMapper.userToUserDto(user);
     }
 }

@@ -23,6 +23,7 @@ public class LogInService {
         User user = userService.getValidUser(request);
         Integer userId = user.getId();
         loginResponse.setUserId(userId);
+
         UserRole userRole = userRoleService.getUserRoleById(userId);
         loginResponse.setUserRoleId(userRole.getRole().getId());
         return loginResponse;
