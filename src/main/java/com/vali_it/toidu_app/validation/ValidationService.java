@@ -29,8 +29,10 @@ public class ValidationService {
         }
     }
 
-    public void userNameAlreadyExists(String username) {
-        if (usernameE)
+    public void userNameAlreadyExists(String username, boolean userExists) {
+        if (userExists){
+            throw new BusinessException("Username " + username +" already taken."  ," choose another username");
+        }
 
     }
 

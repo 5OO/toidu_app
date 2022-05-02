@@ -39,7 +39,7 @@ public class UserService {
         User user = userMapper.userDtoToUser(userDto);
 
         boolean userExists = userRepository.existsByUsername(userDto.getUsername()); // TODO: 02.05.2022 Miks siin Dto sisse võtab. eelmisel real ma juba mappisin.
-        validationService.userNameAlreadyExists(userDto.getUsername());
+        validationService.userNameAlreadyExists(userDto.getUsername(), userExists);
         userRepository.save(user);
         return userMapper.userToUserDto(user);
     }
