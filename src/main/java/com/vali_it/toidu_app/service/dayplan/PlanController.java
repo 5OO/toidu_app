@@ -20,4 +20,11 @@ public class PlanController {
 
     // lisa plaani mingi toiduaine (banaanI
 
+    @PostMapping("/ingredient")
+    @Operation(summary = "lisame päevaplaani üksiku toiduaine ")
+    public PlanIngredientResponse addIngredientToDayPlan(@RequestBody PlanIngredientRequest request) {
+        planService.addIngredientToDayPlan(request);
+        return null;
+    }
+
 }
