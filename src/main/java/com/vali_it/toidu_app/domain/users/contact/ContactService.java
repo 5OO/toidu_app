@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.users.contact;
 
+import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,10 @@ public class ContactService {
 
     @Resource
     private ContactRepository contactRepository;
+
+    public void addNewContact(User user, RegisterRequest request) {
+
+    }
 
 
 //    public RegisterRequest addNewContact(RegisterRequest request) {

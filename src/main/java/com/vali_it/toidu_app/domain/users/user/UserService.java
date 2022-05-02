@@ -2,6 +2,7 @@ package com.vali_it.toidu_app.domain.users.user;
 
 
 import com.vali_it.toidu_app.service.login.LogInRequest;
+import com.vali_it.toidu_app.service.register.RegisterRequest;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +36,13 @@ public class UserService {
         return user.get();   // TODO: 29.04.2022 Rain-le küsimus -   mida võetakse get-ga välja siit?
     }
 
-    public UserDto addNewUser(UserDto userDto) {
-        User user = userMapper.userDtoToUser(userDto);
+    public User addNewUser(RegisterRequest request) {
+        User user = userMapper.toEntity(request);
 
-        boolean userExists = userRepository.existsByUsername(userDto.getUsername()); // TODO: 02.05.2022 Miks siin Dto sisse võtab. eelmisel real ma juba mappisin.
-        validationService.userNameAlreadyExists(userDto.getUsername(), userExists);
+        String username = request.getUsername();
+        boolean userExists = userRepository.existsByUsername(username);
+        validationService.userNameAlreadyExists(username, userExists);
         userRepository.save(user);
-        return userMapper.userToUserDto(user);
+        return user;
     }
 }
