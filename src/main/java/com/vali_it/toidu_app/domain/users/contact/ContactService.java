@@ -1,7 +1,7 @@
 package com.vali_it.toidu_app.domain.users.contact;
 
+import com.vali_it.toidu_app.service.register.RegisterRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 
@@ -14,9 +14,9 @@ public class ContactService {
     private ContactRepository contactRepository;
 
 
-    public ContactDto addNewContact(ContactDto contactDto) {
-        Contact contact = contactMapper.contactDtoToContact(contactDto);
-        contactRepository.save(contact);
-        return contactMapper.contactToContactDto(contact);
-    }
+//    public RegisterRequest addNewContact(RegisterRequest request) {
+//        Contact contact = contactMapper.toContact(request);
+//        contactRepository.save(contact);
+//        return contactMapper.toContact(contact);
+//    }
 }

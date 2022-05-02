@@ -17,6 +17,7 @@ public class LogInController {
     @PostMapping("/login")
     @Operation(summary = "Süsteemi sisse logimine")
     public LoginResponse loginRequest(@RequestBody LogInRequest request) {    //LogInRequest  on Dto
+
         return logInService.loginRequest(request);
     }
 
