@@ -23,8 +23,8 @@ public class IngredientController {
 
     @GetMapping("/id")
     @Operation(summary = "leiab ingredientsi id järgi")
-    public IngredientDto findIngredientById(@RequestParam Integer id) {
-        return ingredientService.findIngredientById(id);
+    public IngredientDto getIngredientById(@RequestParam Integer id) {
+        return ingredientService.getIngredientById(id);
     }
 
     @GetMapping("/find")
@@ -47,7 +47,7 @@ public class IngredientController {
 
     @PutMapping("/id")
     @Operation(summary = "uuendab ingredienti id järgi")
-    public void updateIngredientById(@RequestParam Integer id) {
-        ingredientService.updateIngredientById(id);
+    public void updateIngredientById(@RequestParam Integer id, @RequestBody IngredientDto ingredientDto) {
+        ingredientService.updateIngredientById(id, ingredientDto);
     }
 }

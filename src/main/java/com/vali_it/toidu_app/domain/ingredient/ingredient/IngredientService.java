@@ -1,13 +1,11 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
 
-import com.sun.xml.bind.v2.TODO;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class IngredientService {
@@ -38,17 +36,21 @@ public class IngredientService {
         return ingredientMapper.ingredientToIngredientDto(ingredient);
     }
 
-    public IngredientDto findIngredientById(Integer id) {
+    public IngredientDto getIngredientById(Integer id) {
         Ingredient ingredient = ingredientRepository.getById(id);
         return ingredientMapper.ingredientToIngredientDto(ingredient);
     }
 
     public void removeIngredientById(Integer id) {
-        Ingredient ingredient = findIngredientById(id);
-        ingredientRepository.deleteById((ingredient.));
-        customerRepository.deleteById(customer.getId());
+        Ingredient ingredient = ingredientRepository.getById(id);
+        ingredientRepository.delete(ingredient);
     }
 
+    public void updateIngredientById(Integer id, IngredientDto ingredientDto) {
+        Ingredient ingredient = ingredientRepository.getById(id);
+        ingredientMapper.updateIngredientFromIngredientDto(ingredientDto, ingredient);
+        ingredientRepository.save(ingredient);
+    }
 
 
 //    private Ingredient getValidIngredientById(Integer ingredientId) {
