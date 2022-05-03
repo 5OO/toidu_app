@@ -1,12 +1,11 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,12 +16,38 @@ public class IngredientController {
     private IngredientService ingredientService;
 
     @GetMapping("/all")
+    @Operation(summary = "leiab kõik ingredientsid")
     public List<IngredientDto> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
 
-//    @GetMapping("/find")
-//    public List<IngredientDto> findIngredientByName(@RequestParam Integer id) {
-//        return ingredientService.findIngredientById(id);
-//    }
+    @GetMapping("/id")
+    @Operation(summary = "leiab ingredientsi id järgi")
+    public IngredientDto findIngredientById(@RequestParam Integer id) {
+        return ingredientService.findIngredientById(id);
+    }
+
+    @GetMapping("/find")
+    @Operation(summary = "leiab ingredienti nime kaudu")
+    public List<IngredientDto> findIngredientIdByName(@RequestParam String name) {
+        return ingredientService.findIngredientIdByName(name);
+    }
+
+    @PostMapping("/create")
+    @Operation(summary = "lisab uue toitaine")
+    public IngredientDto addNewIngredient(@Valid @RequestBody IngredientDto ingredientDto) {
+        return ingredientService.addNewIngredient(ingredientDto);
+    }
+
+    @DeleteMapping("/id")
+    @Operation(summary = "kustutab ingredienti id järgi")
+    public void removeIngredientById(@RequestParam Integer id) {
+        ingredientService.removeIngredientById(id);
+    }
+
+    @PutMapping("/id")
+    @Operation(summary = "uuendab ingredienti id järgi")
+    public void updateIngredientById(@RequestParam Integer id) {
+        ingredientService.updateIngredientById(id);
+    }
 }

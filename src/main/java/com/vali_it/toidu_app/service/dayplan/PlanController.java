@@ -14,7 +14,7 @@ public class PlanController {
 
     @PostMapping
     @Operation(summary = "lisame uue päevaplaani")
-    public PlanResponse createDayPlan(@RequestBody PlanRequest planRequest) {
+    public PlanResponse createNewDayPlan(@RequestBody PlanRequest planRequest) {
         return planService.createNewDayPlan(planRequest);
     }
 
