@@ -12,6 +12,8 @@ public interface IngredientMapper {
 
     List<IngredientDto> toIngredients(List<Ingredient> ingredient);
 
+    List<Ingredient> toIngredientDtos(List<IngredientDto> ingredientDtos);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateIngredientFromIngredientDto(IngredientDto ingredientDto, @MappingTarget Ingredient ingredient);
 }
