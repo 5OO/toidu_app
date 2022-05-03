@@ -20,4 +20,11 @@ public class UserRecipeController {
     public UserRecipeResponse createRecipe(@RequestBody UserRecipeRequest userRecipeRequest) {
         return userRecipeService.createRecipe(userRecipeRequest);
     }
+
+    @PostMapping
+    @Operation(summary = "lisame retseptile toidu koostisosad")
+    public void addIngredient(@RequestBody UserIngredientRequest request){
+        userRecipeService.addIngredient(request);
+
+    }
 }
