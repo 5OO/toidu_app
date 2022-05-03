@@ -22,16 +22,12 @@ public class RecipeService {
 
     public UserRecipeResponse addNewRecipe(UserRecipeRequest userRecipeRequest) {
         Recipe recipe = recipeMapper.recipeDtoToRecipe(userRecipeRequest);
-        recipe.setName(userRecipeRequest.getName());
-        recipe.setDescription(userRecipeRequest.getDescription());
-        recipe.setInstructions(userRecipeRequest.getInstructions());
-        recipe.setPublicRecipe(userRecipeRequest.getPublicRecipe());
-
         User user = userRepository.getById(userRecipeRequest.getUsersId());
         recipe.setUsers(user);
 
         recipeRepository.save(recipe);
-
-        return null;
+        UserRecipeResponse response = new UserRecipeResponse();
+        response.setRecipeId(recipe.getId());
+        return response;
     }
 }
