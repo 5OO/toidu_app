@@ -6,6 +6,7 @@ import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlanRepository;
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlanService;
 import com.vali_it.toidu_app.domain.dayplan.ingredientplan.IngredientPlan;
 import com.vali_it.toidu_app.domain.dayplan.ingredientplan.IngredientPlanService;
+import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +24,9 @@ public class PlanService {
     @Resource
     private IngredientPlanService ingredientPlanService;
 
+    @Resource
+    private PlanRecipeService planRecipeService;
+
     public PlanResponse createNewDayPlan(PlanRequest planRequest) {
         DayPlan dayPlan = dayPlanService.addNewDayPlan(planRequest);
         Integer dayPlanId = dayPlan.getId();
@@ -32,6 +36,11 @@ public class PlanService {
 
     public void addIngredientToDayPlan(PlanIngredientRequest request) {
         ingredientPlanService.addNewIngredientPlan(request);
+    }
+
+
+    public void addRecipeToDayPlan(PlanRecipeRequest planRecipeRequest) {
+        planRecipeService.addNewRecipeToPlan(planRecipeRequest);
 
     }
 }

@@ -26,9 +26,6 @@ public class PlanRecipe {
     @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
-    @Column(name = "planned_serving_size", nullable = false)
-    private Integer plannedServingSize;
-
     @Column(name = "date_time_added", nullable = false)
     private Instant dateTimeAdded;
 
