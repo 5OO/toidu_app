@@ -87,7 +87,6 @@ CREATE TABLE toidu_app.plan_recipe (
                                        id serial  NOT NULL,
                                        day_plan_id int  NOT NULL,
                                        recipe_id int  NOT NULL,
-                                       planned_serving_size int  NOT NULL DEFAULT 1,
                                        date_time_added timestamp  NOT NULL,
                                        CONSTRAINT plan_recipes_pk PRIMARY KEY (id)
 );

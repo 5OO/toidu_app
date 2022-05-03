@@ -22,9 +22,8 @@ public class PlanController {
 
     @PostMapping("/ingredient")
     @Operation(summary = "lisame päevaplaani üksiku toiduaine ")
-    public PlanIngredientResponse addIngredientToDayPlan(@RequestBody PlanIngredientRequest request) {
+    public void addIngredientToDayPlan(@RequestBody PlanIngredientRequest request) {
         planService.addIngredientToDayPlan(request);
-        return null;
     }
 
 }

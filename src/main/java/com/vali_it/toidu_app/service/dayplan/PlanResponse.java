@@ -10,6 +10,7 @@ public class PlanResponse {
     }
 
     public PlanResponse(Integer dayPlanId) {
+
         this.dayPlanId = dayPlanId;
     }
 }

@@ -30,10 +30,8 @@ public class PlanService {
         return new PlanResponse(dayPlanId);
     }
 
+    public void addIngredientToDayPlan(PlanIngredientRequest request) {
+        ingredientPlanService.addNewIngredientPlan(request);
 
-    public PlanIngredientResponse addIngredientToDayPlan(PlanIngredientRequest planIngredientRequest) {
-        IngredientPlan ingredientPlan = ingredientPlanService.addNewIngredientPlan(planIngredientRequest);
-
-        return ingredientPlan;
     }
 }

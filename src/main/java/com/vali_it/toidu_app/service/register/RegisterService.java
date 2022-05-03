@@ -13,6 +13,8 @@ public class RegisterService {
     private UserService userService;
     @Resource
     private ContactService contactService;
+
+
     public RegisterResponse registerNewCustomer(RegisterRequest request) {
         User user = userService.addNewUser(request);
         contactService.addNewContact(user, request);

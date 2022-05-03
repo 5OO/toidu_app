@@ -2,6 +2,10 @@ package com.vali_it.toidu_app.domain.dayplan.ingredientplan;
 
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlan;
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlanRepository;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientRepository;
+import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnit;
+import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitRepository;
 import com.vali_it.toidu_app.service.dayplan.PlanIngredientRequest;
 import org.springframework.stereotype.Service;
 
@@ -17,22 +21,28 @@ public class IngredientPlanService {
     private DayPlanRepository dayPlanRepository;
 
     @Resource
+    private IngredientRepository ingredientRepository;
+
+    @Resource
+    private MeasureUnitRepository measureUnitRepository;
+
+    @Resource
     private IngredientPlanRepository ingredientPlanRepository;
-    public IngredientPlan addNewIngredientPlan(PlanIngredientRequest request) {
+    public void addNewIngredientPlan(PlanIngredientRequest request) {
+
         IngredientPlan ingredientPlan = new IngredientPlan();
         ingredientPlan.setServingSize(request.getServingSize());
-
-
         // todo - see asi siin all
         DayPlan dayPlan = dayPlanRepository.getById(request.getDayPlanId());
         ingredientPlan.setDayPlan(dayPlan);
 
-        // todo: teha uuesti sama systeemiga
-        // ingredientId;
-        // measureUnitId;
+        Ingredient ingredient =ingredientRepository.getById(request.getIngredientId());
+        ingredientPlan.setIngredient(ingredient);
+
+        MeasureUnit measureUnit = measureUnitRepository.getById(request.getMeasureUnitId());
+        ingredientPlan.setMeasureUnit(measureUnit);
 
         ingredientPlanRepository.save(ingredientPlan);
 
-        return ingredientPlan;
     }
 }
