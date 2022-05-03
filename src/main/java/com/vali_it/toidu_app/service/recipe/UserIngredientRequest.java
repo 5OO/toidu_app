@@ -9,7 +9,7 @@ import java.time.Instant;
 public class UserIngredientRequest {
     private Integer recipeId;
     private Integer ingredientId;
-    private Integer measureUnit;
+    private Integer measureUnitId;
     private Double quantity;
     private Instant dateFrom;
     private Instant dateTo;
