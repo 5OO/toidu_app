@@ -26,4 +26,15 @@ public class PlanController {
         planService.addIngredientToDayPlan(request);
     }
 
+    //lisame mingi retsepti päevaplaani
+
+    @PostMapping("/recipe")
+    @Operation(summary = "lisame päevaplaani uue retsepti")
+    public void addRecipeToDayPlan(@RequestBody PlanRecipeRequest planRecipeRequest){
+        planService.addRecipeToDayPlan(planRecipeRequest);
+
+    }
+
+
+
 }
