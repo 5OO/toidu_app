@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
 
+import com.vali_it.toidu_app.domain.ingredient.ingredientiningredientgroup.IngredientInIngredientGroupService;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,9 @@ public class IngredientService {
 
     @Resource
     private ValidationService validationService;
+
+    @Resource
+    private IngredientInIngredientGroupService ingredientInIngredientGroupService;
 
     public List<IngredientDto> getAllIngredients() {
         List<Ingredient> ingredients = ingredientRepository.findAll();
