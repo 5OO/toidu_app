@@ -1,6 +1,9 @@
-package com.vali_it.toidu_app.domain.ingredient.ingredient;
+package com.vali_it.toidu_app.service.ingredient;
 
 
+import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientMapper;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientRepository;
 import com.vali_it.toidu_app.domain.ingredient.ingredientiningredientgroup.IngredientInIngredientGroupService;
 import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
 import com.vali_it.toidu_app.validation.ValidationService;
@@ -18,11 +21,10 @@ public class IngredientService {
     @Resource
     private IngredientMapper ingredientMapper;
 
-    @Resource
-    private ValidationService validationService;
+//    @Resource
+//    private ValidationService validationService;
 
-    @Resource
-    private IngredientInIngredientGroupService ingredientInIngredientGroupService;
+
 
     public List<IngredientRequest> getAllIngredients() {
         List<Ingredient> ingredients = ingredientRepository.findAll();
@@ -58,11 +60,6 @@ public class IngredientService {
     }
 
 
-//    private Ingredient getValidIngredientById(Integer ingredientId) {
-//        Optional<Ingredient> ingredient = ingredientRepository.findById(ingredientId);
-//        validationService.ingredientExists(ingredientId, ingredient);
-//        return ingredient.get();
-//    }
 
 
 }
