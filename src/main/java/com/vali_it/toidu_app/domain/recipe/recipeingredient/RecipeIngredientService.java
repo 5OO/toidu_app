@@ -44,7 +44,6 @@ public class RecipeIngredientService {
         MeasureUnit measureUnit = measureUnitRepository.getById(request.getMeasureUnitId());
         recipeIngredient.setMeasureUnit(measureUnit);
 
-
         recipeIngredientRepository.save(recipeIngredient);
 
     }

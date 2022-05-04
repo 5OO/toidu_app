@@ -21,7 +21,7 @@ public class UserRecipeController {
         return userRecipeService.createRecipe(userRecipeRequest);
     }
 
-    @PostMapping
+    @PostMapping("/ingredient")
     @Operation(summary = "lisame retseptile toidu koostisosad")
     public void addIngredient(@RequestBody UserIngredientRequest request){
         userRecipeService.addIngredient(request);
