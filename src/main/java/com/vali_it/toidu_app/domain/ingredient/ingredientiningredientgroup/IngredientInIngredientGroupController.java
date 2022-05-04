@@ -17,8 +17,7 @@ public class IngredientInIngredientGroupController {
     private IngredientInIngredientGroupService ingredientInIngredientGroupService;
 
     @GetMapping("/ingredients")
-
-    private List<IngredientInIngredientGroup> getIngredientByIngredientGroupId(@RequestParam Integer id) {
+    private List<IngredientInIngredientGroupDto> getIngredientByIngredientGroupId(@RequestParam Integer id) {
         return ingredientInIngredientGroupService.getIngredientByIngredientGroupId(id);
     }
 }

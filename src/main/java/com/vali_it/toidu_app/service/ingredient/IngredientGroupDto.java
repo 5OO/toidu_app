@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.ingredient.ingredientgroup;
+package com.vali_it.toidu_app.service.ingredient;
 
 import lombok.Data;
 

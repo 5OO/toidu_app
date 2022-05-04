@@ -9,9 +9,6 @@ import java.util.List;
 @Repository
 public interface IngredientInIngredientGroupRepository extends JpaRepository<IngredientInIngredientGroup, Integer> {
 
-//    @Query("select i from IngredientInIngredientGroup i where i.ingredient.id = ?1")
-//    List<IngredientInIngredientGroup> findByIngredientGroup(Integer id);
-
     @Query("select i from IngredientInIngredientGroup i where i.ingredientGroup.id = ?1 order by i.ingredient.id")
     List<IngredientInIngredientGroup> findByIngredientGroup(Integer id);
 

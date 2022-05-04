@@ -1,6 +1,6 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredientgroup;
 
-import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientMapper;
+import com.vali_it.toidu_app.service.ingredient.IngredientGroupDto;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

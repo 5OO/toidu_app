@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredientgroup;
 
+import com.vali_it.toidu_app.service.ingredient.IngredientGroupDto;
 import org.mapstruct.*;
 
 import java.util.List;

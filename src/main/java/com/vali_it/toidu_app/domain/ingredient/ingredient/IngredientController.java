@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
 
+import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +18,26 @@ public class IngredientController {
 
     @GetMapping("/all")
     @Operation(summary = "leiab kõik ingredientsid")
-    public List<IngredientDto> getAllIngredients() {
+    public List<IngredientRequest> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
 
     @GetMapping("/id")
     @Operation(summary = "leiab ingredientsi id järgi")
-    public IngredientDto getIngredientById(@RequestParam Integer id) {
+    public IngredientRequest getIngredientById(@RequestParam Integer id) {
         return ingredientService.getIngredientById(id);
     }
 
     @GetMapping("/find")
     @Operation(summary = "leiab ingredienti nime kaudu")
-    public List<IngredientDto> findIngredientIdByName(@RequestParam String name) {
+    public List<IngredientRequest> findIngredientIdByName(@RequestParam String name) {
         return ingredientService.findIngredientIdByName(name);
     }
 
     @PostMapping("/create")
     @Operation(summary = "lisab uue toitaine")
-    public IngredientDto addNewIngredient(@Valid @RequestBody IngredientDto ingredientDto) {
-        return ingredientService.addNewIngredient(ingredientDto);
+    public IngredientRequest addNewIngredient(@Valid @RequestBody IngredientRequest ingredientRequest) {
+        return ingredientService.addNewIngredient(ingredientRequest);
     }
 
     @DeleteMapping("/id")
@@ -47,7 +48,7 @@ public class IngredientController {
 
     @PutMapping("/id")
     @Operation(summary = "uuendab ingredienti id järgi")
-    public void updateIngredientById(@RequestParam Integer id, @RequestBody IngredientDto ingredientDto) {
-        ingredientService.updateIngredientById(id, ingredientDto);
+    public void updateIngredientById(@RequestParam Integer id, @RequestBody IngredientRequest ingredientRequest) {
+        ingredientService.updateIngredientById(id, ingredientRequest);
     }
 }
