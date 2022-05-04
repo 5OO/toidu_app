@@ -1,7 +1,6 @@
 package com.vali_it.toidu_app.service.recipe;
 
 
-import com.vali_it.toidu_app.domain.users.user.User;
 import lombok.Data;
 
 
