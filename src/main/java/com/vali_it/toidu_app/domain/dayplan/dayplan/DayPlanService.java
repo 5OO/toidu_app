@@ -7,7 +7,7 @@ import com.vali_it.toidu_app.service.dayplan.PlanRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.Instant;
+import java.util.List;
 
 @Service
 public class DayPlanService {
@@ -22,7 +22,7 @@ public class DayPlanService {
     private UserRepository userRepository;
 
     public DayPlan addNewDayPlan(PlanRequest request) {
-        DayPlan dayPlan = dayPlanMapper.dayPlanDtoToDayPlan(request);
+        DayPlan dayPlan = dayPlanMapper.toEntity(request);
         User user = userRepository.getById(request.getUserId());
         dayPlan.setUser(user);
         dayPlanRepository.save(dayPlan);
@@ -30,4 +30,7 @@ public class DayPlanService {
     }
 
 
+    public List<DayPlan> getAllUserDayPlans(Integer userId) {
+        return dayPlanRepository.findDayPlans(userId);
+    }
 }

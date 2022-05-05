@@ -18,6 +18,7 @@ public class IngredientController {
     @GetMapping("/all")
     @Operation(summary = "leiab kõik ingredientsid")
     public List<IngredientDto> getAllIngredients() {
+
         return ingredientService.getAllIngredients();
     }
 

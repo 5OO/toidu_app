@@ -4,14 +4,16 @@ import com.vali_it.toidu_app.service.dayplan.PlanRequest;
 import org.mapstruct.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports = Instant.class)
 public interface DayPlanMapper {
     @Mapping(target = "dateTimeAdded", expression = "java(Instant.now())")
-    DayPlan dayPlanDtoToDayPlan(PlanRequest planRequest);
+    DayPlan toEntity(PlanRequest request);
 
-    PlanRequest dayPlanToDayPlanDto(DayPlan dayPlan);
+    @Mapping(target = "dayPlanId", source = "id")
+    DayPlanDto toDto(DayPlan dayPlan);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateDayPlanFromDayPlanDto(PlanRequest planRequest, @MappingTarget DayPlan dayPlan);
+    List <DayPlanDto> toDtos(List<DayPlan> dayPlans);
+
 }
