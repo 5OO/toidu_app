@@ -29,7 +29,7 @@ public class AllowedMeasureUnit {
     @Column(name = "conversion_multiplier", nullable = false, precision = 8, scale = 3)
     private BigDecimal conversionMultiplier;
 
-    @Column(name = "onversion_description")
-    private String onversionDescription;
+    @Column(name = "conversion_description")
+    private String conversionDescription;
 
 }

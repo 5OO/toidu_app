@@ -18,8 +18,9 @@ public class AllowedUnitController {
 
 
     @GetMapping("/id")
-    @Operation(summary = "leiab id")
+    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
     public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestParam Integer ingredientId) {
         return allowedUnitService.getMeasureUnits(ingredientId);
     }
+
 }
