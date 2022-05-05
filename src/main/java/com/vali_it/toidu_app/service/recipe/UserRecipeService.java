@@ -17,8 +17,8 @@ public class UserRecipeService {
     private RecipeIngredientService recipeIngredientService;
 
     public UserRecipeResponse createRecipe(UserRecipeRequest userRecipeRequest) {
-        UserRecipeResponse userRecipeResponse = recipeService.addNewRecipe(userRecipeRequest);
-        return userRecipeResponse;
+        return recipeService.addNewRecipe(userRecipeRequest);
+
     }
 
     public void addIngredient(UserIngredientRequest request) {

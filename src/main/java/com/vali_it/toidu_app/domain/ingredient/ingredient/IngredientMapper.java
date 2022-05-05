@@ -1,19 +1,20 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
+import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
 import org.mapstruct.*;
 
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface IngredientMapper {
-    Ingredient ingredientDtoToIngredient(IngredientDto ingredientDto);
+    Ingredient ingredientDtoToIngredient(IngredientRequest ingredientRequest);
 
-    IngredientDto ingredientToIngredientDto(Ingredient ingredient);
+    IngredientRequest ingredientToIngredientDto(Ingredient ingredient);
 
-    List<IngredientDto> toIngredients(List<Ingredient> ingredient);
+    List<IngredientRequest> toIngredients(List<Ingredient> ingredient);
 
-    List<Ingredient> toIngredientDtos(List<IngredientDto> ingredientDtos);
+    List<Ingredient> toIngredientDtos(List<IngredientRequest> ingredientRequests);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateIngredientFromIngredientDto(IngredientDto ingredientDto, @MappingTarget Ingredient ingredient);
+    void updateIngredientFromIngredientDto(IngredientRequest ingredientRequest, @MappingTarget Ingredient ingredient);
 }
