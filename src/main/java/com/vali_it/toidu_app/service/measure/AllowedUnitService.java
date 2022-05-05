@@ -20,4 +20,10 @@ public class AllowedUnitService {
         return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
     }
 
+
+
+    public AllowedMeasureUnitDto getConversionMultiplierById(Integer id) {
+        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.getById(id);
+        return allowedMeasureUnitMapper.allowedMeasureUnitToAllowedMeasureUnitDto(conversionMultiplier);
+    }
 }

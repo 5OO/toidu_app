@@ -23,4 +23,11 @@ public class AllowedUnitController {
         return allowedUnitService.getMeasureUnits(ingredientId);
     }
 
+
+    @GetMapping("/conversion")
+    @Operation(summary = "leiab conversionmultiplieri id kaudu")
+    public AllowedMeasureUnitDto getConversionMultiplierById(@RequestParam Integer id) {
+        return allowedUnitService.getConversionMultiplierById(id);
+    }
+
 }
