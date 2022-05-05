@@ -1,4 +1,4 @@
-package com.vali_it.toidu_app.domain.measure.allowedmeasureunit;
+package com.vali_it.toidu_app.service.measure;
 
 import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
 import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitDto;
@@ -13,5 +13,5 @@ public class AllowedMeasureUnitDto implements Serializable {
     private final IngredientRequest ingredient;
     private final MeasureUnitDto measureUnit;
     private final BigDecimal conversionMultiplier;
-    private final String onversionDescription;
+    private final String conversionDescription;
 }
