@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRoleRepository extends JpaRepository<UserRole, Integer> {
-    @Query("select u from UserRole u where u.users.id = ?1")
-    UserRole findByUsersId(Integer id);
+    @Query("select u from UserRole u where u.user.id = ?1")
+    UserRole findUserRole(Integer userId);
 
 
 

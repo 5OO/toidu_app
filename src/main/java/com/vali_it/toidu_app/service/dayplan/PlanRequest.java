@@ -7,4 +7,5 @@ import java.io.Serializable;
 @Data
 public class PlanRequest implements Serializable {
     private String description;
+    private Integer userId;
 }

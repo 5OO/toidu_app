@@ -5,7 +5,7 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RecipeMapper {
-    @Mapping(source = "usersId", target = "users.id")
+    @Mapping(source = "userId", target = "user.id")
     Recipe recipeDtoToRecipe(UserRecipeRequest userRecipeRequest);
 
     @InheritInverseConfiguration(name = "recipeDtoToRecipe")

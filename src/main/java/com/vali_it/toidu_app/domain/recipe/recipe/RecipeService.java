@@ -22,12 +22,17 @@ public class RecipeService {
     private RecipeMapper recipeMapper;
 
     public UserRecipeResponse addNewRecipe(UserRecipeRequest userRecipeRequest) {
-        Recipe recipe = recipeMapper.recipeDtoToRecipe(userRecipeRequest); //teised väljad tegi mapper ära automaatselt
+        Recipe recipe = recipeMapper.recipeDtoToRecipe(userRecipeRequest);
+        //teised väljad tegi mapper ära automaatselt
 
-        User user = userRepository.getById(userRecipeRequest.getUsersId());//id tuleb käsitsi mäppida.
-        recipe.setUsers(user);
+        User user = userRepository.getById(userRecipeRequest.getUserId());
+        //id tuleb käsitsi mäppida.
 
-        recipeRepository.save(recipe); //salvestamise hetkel tekkib recipe objekti id. Ül oli luua uue retsepti id.
+        recipe.setUser(user);
+
+        recipeRepository.save(recipe);
+        //salvestamise hetkel tekkib recipe objekti id. Ül oli luua uue retsepti id.
+
         UserRecipeResponse response = new UserRecipeResponse();
         response.setRecipeId(recipe.getId());
         return response;

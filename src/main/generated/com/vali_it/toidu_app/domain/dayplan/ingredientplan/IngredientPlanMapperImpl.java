@@ -1,6 +1,5 @@
 package com.vali_it.toidu_app.domain.dayplan.ingredientplan;
 
-import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlan;
 import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
 import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientDto;
 import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnit;

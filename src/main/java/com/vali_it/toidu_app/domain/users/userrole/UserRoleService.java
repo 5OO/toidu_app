@@ -1,13 +1,8 @@
 package com.vali_it.toidu_app.domain.users.userrole;
 
-import com.vali_it.toidu_app.domain.users.role.Role;
-import com.vali_it.toidu_app.domain.users.role.RoleRepository;
-import com.vali_it.toidu_app.domain.users.user.User;
-import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 @Service
 public class UserRoleService {
@@ -23,7 +18,7 @@ public class UserRoleService {
 //    private RoleRepository roleRepository;
 
     public UserRole getUserRoleById(Integer userId) {
-        return userRoleRepository.findByUsersId(userId);
+        return userRoleRepository.findUserRole(userId);
     }
 
 //

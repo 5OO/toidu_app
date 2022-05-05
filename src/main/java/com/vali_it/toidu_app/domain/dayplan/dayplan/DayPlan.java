@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.dayplan.dayplan;
 
+import com.vali_it.toidu_app.domain.users.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,5 +22,9 @@ public class DayPlan {
 
     @Column(name = "description", nullable = false, length = 100)
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }
