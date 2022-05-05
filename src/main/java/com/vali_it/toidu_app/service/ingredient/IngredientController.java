@@ -1,6 +1,8 @@
-package com.vali_it.toidu_app.domain.ingredient.ingredient;
+package com.vali_it.toidu_app.service.ingredient;
 
 
+import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
+import com.vali_it.toidu_app.service.ingredient.IngredientService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
