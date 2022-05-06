@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class DetailedDayPlanResponse {
     private Integer dayPlanId;
-    private List<DetailedDayPlanDto> planDtos;
+    private List<PlannedItem> plannedItems;
 
 }
