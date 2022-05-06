@@ -64,9 +64,9 @@ public class PlanService {
         Integer dayPlanId = dayPlanService.getValidDayPlanId(userId);
 
         // TODO: 06.05.2022 energy
-        List<PlannedItem> plannedIngredients = getPlannedIngredients(userId);
+        List<PlannedItem> plannedIngredients = getPlannedIngredients(dayPlanId);
         // TODO: 06.05.2022 energy
-        List<PlannedItem> plannedRecipes = getPlannedRecipes(userId);
+        List<PlannedItem> plannedRecipes = getPlannedRecipes(dayPlanId);
 
         List<PlannedItem> plannedItems = createPlannedItems(plannedIngredients, plannedRecipes);
 
