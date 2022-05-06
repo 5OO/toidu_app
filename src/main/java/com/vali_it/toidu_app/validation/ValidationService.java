@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.validation;
 
 
+import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlan;
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.infrastructure.exception.BusinessException;
 import com.vali_it.toidu_app.infrastructure.exception.DataNotFoundException;
@@ -25,7 +26,7 @@ public class ValidationService {
         // Vaatame, kas Matrjoska optional on tühi
         if (user.isEmpty()) {
             // kui jah siis viskame ülesse vea
-            throw new BusinessException("Ei saa siseneda", "Siusesta õiged andmed või registreeri kasutaja");
+            throw new BusinessException("Ei saa siseneda", "Sisesta õiged andmed või registreeri kasutaja");
         }
     }
 
@@ -33,7 +34,12 @@ public class ValidationService {
         if (userExists){
             throw new BusinessException("Username " + username +" already taken."  ," choose another username");
         }
+    }
 
+    public void validDayPlanExits(Optional<DayPlan> dayPlan) {
+        if (dayPlan.isEmpty()) {
+            throw new BusinessException("Tänase päeva toidplaan loomata, ", "loo uus plaan.");
+        }
     }
 
 

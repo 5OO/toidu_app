@@ -1,15 +1,27 @@
 package com.vali_it.toidu_app.domain.dayplan.ingredientplan;
 
 import com.vali_it.toidu_app.service.dayplan.PlanIngredientRequest;
-import org.mapstruct.*;
+import com.vali_it.toidu_app.service.dayplan.PlannedItem;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
+
+import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface IngredientPlanMapper {
     IngredientPlan toEntity(PlanIngredientRequest planIngredientRequest);
 
 
-    PlanIngredientRequest ingredientPlanToIngredientPlanDto(IngredientPlan ingredientPlan);
+    @Mapping(target = "itemId", source = "id")
+    @Mapping(target = "itemName", source = "ingredient.name")
+    @Mapping(target = "isRecipe", constant = "false")
+    @Mapping(target = "quantity", source = "servingSize")
+    @Mapping(target = "measureUnitName", source = "measureUnit.name")
+    PlannedItem toPlannedItem(IngredientPlan ingredient);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateIngredientPlanFromIngredientPlanDto(IngredientPlanDto ingredientPlanDto, @MappingTarget IngredientPlan ingredientPlan);
+    List<PlannedItem> toPlannedItems(List<IngredientPlan> ingredient);
+
+
+
 }

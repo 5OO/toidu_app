@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class PlanRecipeService {
@@ -36,11 +38,9 @@ public class PlanRecipeService {
 
         planRecipeRepository.save(planRecipe);
 
+    }
 
-
-
-
-
-
+    public List<PlanRecipe> getPlannedRecipes(Integer userId) {
+        return planRecipeRepository.findPlannedRecipes(userId);
     }
 }

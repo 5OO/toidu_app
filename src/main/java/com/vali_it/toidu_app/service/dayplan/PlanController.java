@@ -42,8 +42,9 @@ public class PlanController {
         return planService.getAllUserDayPlans(userId);
     }
 
-
-
-
-
+    @GetMapping
+    @Operation(summary = "Kuvab kasjutaja tänast päevaplaani")
+    public DetailedDayPlanResponse getTodaysDetailedDayPlan(@RequestParam Integer userId){
+        return planService.getTodaysDetailedDayPlan(userId);
+    }
 }

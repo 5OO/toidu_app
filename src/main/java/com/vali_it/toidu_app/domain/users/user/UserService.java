@@ -32,7 +32,7 @@ public class UserService {
         // Anname meetodis kaasea Matrjoksa optional
         validationService.userExists(user);
 
-        // Võtame Matrjoska Optional seest .get() abiga vlja Matrjoska User ja tagastame selle returniga
+        // Võtame Matrjoska Optional seest .get() abiga välja Matrjoska User ja tagastame selle returniga
         return user.get();   // TODO: 29.04.2022 Rain-le küsimus -   mida võetakse get-ga välja siit?
     }
 

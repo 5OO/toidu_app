@@ -10,6 +10,8 @@ import com.vali_it.toidu_app.service.dayplan.PlanIngredientRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class IngredientPlanService {
@@ -28,6 +30,8 @@ public class IngredientPlanService {
 
     @Resource
     private IngredientPlanRepository ingredientPlanRepository;
+
+
     public void addNewIngredientPlan(PlanIngredientRequest request) {
 
         IngredientPlan ingredientPlan = new IngredientPlan();
@@ -36,7 +40,7 @@ public class IngredientPlanService {
         DayPlan dayPlan = dayPlanRepository.getById(request.getDayPlanId());
         ingredientPlan.setDayPlan(dayPlan);
 
-        Ingredient ingredient =ingredientRepository.getById(request.getIngredientId());
+        Ingredient ingredient = ingredientRepository.getById(request.getIngredientId());
         ingredientPlan.setIngredient(ingredient);
 
         MeasureUnit measureUnit = measureUnitRepository.getById(request.getMeasureUnitId());
@@ -44,5 +48,9 @@ public class IngredientPlanService {
 
         ingredientPlanRepository.save(ingredientPlan);
 
+    }
+
+    public List<IngredientPlan> getPlannedIngredients(Integer userId) {
+        return ingredientPlanRepository.findPlannedIngredients(userId);
     }
 }

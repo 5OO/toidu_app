@@ -28,10 +28,10 @@ CREATE TABLE toidu_app.contact (
 -- Table: day_plan
 CREATE TABLE toidu_app.day_plan (
     id serial  NOT NULL,
-    date_time_added timestamp  NOT NULL,
+    date_added date  NOT NULL,
     description varchar(100)  NOT NULL,
     user_id int  NOT NULL,
-    CONSTRAINT plan_unique UNIQUE (date_time_added, description) NOT DEFERRABLE  INITIALLY IMMEDIATE,
+    CONSTRAINT plan_unique UNIQUE (date_added, description) NOT DEFERRABLE  INITIALLY IMMEDIATE,
     CONSTRAINT plan_pk PRIMARY KEY (id)
 );
 
