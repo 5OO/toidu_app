@@ -17,16 +17,29 @@ public class AllowedUnitService {
     @Resource
     private UnitMultiplierResponse unitMultiplierResponse;
 
+
+ //Otsib ingredientId järgi sellele vastavad mõõtühikud ja nende id
+ // Response JSON
+//    {
+//        "measureUnit": {
+//        "id": 3,
+//                "name": "tk"
+//    }
+//    }
     public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
                 .findAllowedMeasureUnitByIngredientId(ingredientId);
         return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
     }
 
-
+//Konvertimis kordaja kätte saamine ingredientId ja measureUnitId kaudu
+//    Response JSON
+//    {
+//        "conversionMultiplier": 1.025
+//    }
     public UnitMultiplierResponse getConversionMultiplier(Integer ingredientId, Integer measureUnitId) {
-        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.findByIngredient_IdAndMeasureUnit_Id(ingredientId, measureUnitId);
-        unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier());
+        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.findByIngredient_IdAndMeasureUnit_Id(ingredientId, measureUnitId); //otsib repositorist
+        unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier()); //setib UnitMultiplierResponses olevale conversionMultiplierile eelnevalt realt saadud väärtuse
         return unitMultiplierResponse;
     }
 }

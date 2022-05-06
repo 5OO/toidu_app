@@ -20,10 +20,9 @@ public class CalculatorController {
 
     @GetMapping("/conversion")
     @Operation(summary = "arvutus")
-    public CalculatorResponse conversionCalculation(@RequestParam Integer ingredientId,
-                                                    @RequestParam Integer measureUnitId,
-                                                    @RequestParam BigDecimal quantity) {
-        return calculator.conversionCalculation(ingredientId, measureUnitId, quantity);
+    public CalculatorResponse conversionCalculation(CalculatorRequest calculatorRequest) {
+        return calculator.conversionCalculation(calculatorRequest);
     }
+
 
 }

@@ -23,16 +23,21 @@ public class Calculator {
     private CalculatorResponse calculatorResponse;
 
 
-    public CalculatorResponse conversionCalculation(Integer ingredientId, Integer measureUnitId, BigDecimal quantity) {
-        UnitMultiplierResponse response = allowedUnitService.getConversionMultiplier(ingredientId, measureUnitId);
-        BigDecimal multiplier = response.getConversionMultiplier();
-        IngredientRequest macro = ingredientService.getIngredientById(ingredientId);
-        BigDecimal conversionToGrams = new BigDecimal(100);
-        BigDecimal sumEnergy = macro.getEnergy().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
-        BigDecimal sumCarbs = macro.getCarbs().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
-        BigDecimal sumFat = macro.getFat().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
-        BigDecimal sumProtein = macro.getProtein().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
+    public CalculatorResponse conversionCalculation(CalculatorRequest calculatorRequest) {
 
+        UnitMultiplierResponse response = allowedUnitService.getConversionMultiplier(calculatorRequest.getIngredientId(), calculatorRequest.getMeasureUnitId());
+        BigDecimal multiplier = response.getConversionMultiplier();
+        IngredientRequest macro = ingredientService.getIngredientById(calculatorRequest.getIngredientId());
+        BigDecimal conversionToGrams = new BigDecimal(100); //sajandik (g/ml) konvertimise element
+        BigDecimal ammount = calculatorRequest.getQuantity();
+
+        //Arvutused
+        BigDecimal sumEnergy = macro.getEnergy().multiply(ammount).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumCarbs = macro.getCarbs().multiply(ammount).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumFat = macro.getFat().multiply(ammount).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumProtein = macro.getProtein().multiply(ammount).divide(conversionToGrams).multiply(multiplier);
+
+        //Tulemused mapitakse CalculatorResponse Dtosse
         calculatorResponse.setEnergy(sumEnergy);
         calculatorResponse.setCarbs(sumCarbs);
         calculatorResponse.setFat(sumFat);
