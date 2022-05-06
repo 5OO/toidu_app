@@ -24,7 +24,6 @@ public class AllowedUnitService {
     }
 
 
-
     public UnitMultiplierResponse getConversionMultiplier(Integer ingredientId, Integer measureUnitId) {
         AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.findByIngredient_IdAndMeasureUnit_Id(ingredientId, measureUnitId);
         unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier());

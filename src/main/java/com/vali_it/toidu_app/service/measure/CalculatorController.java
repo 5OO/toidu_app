@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,9 @@ public class CalculatorController {
     @GetMapping("/conversion")
     @Operation(summary = "arvutus")
     public CalculatorResponse conversionCalculation(@RequestParam Integer ingredientId,
-                                                    @RequestParam Integer multiplyer, Integer quantity) {
-        return calculator.conversionCalculation(ingredientId, multiplyer, quantity);
+                                                    @RequestParam Integer measureUnitId,
+                                                    @RequestParam BigDecimal quantity) {
+        return calculator.conversionCalculation(ingredientId, measureUnitId, quantity);
     }
 
 }

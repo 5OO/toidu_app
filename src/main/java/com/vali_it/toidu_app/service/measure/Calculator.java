@@ -23,17 +23,16 @@ public class Calculator {
     private CalculatorResponse calculatorResponse;
 
 
-    public CalculatorResponse conversionCalculation (Integer ingredientId, Integer multiplyer, Integer quantity) {
-        BigDecimal amount = new BigDecimal(quantity);
-//        AllowedMeasureUnitDto conversionMultiplyerDto = allowedUnitService.getConversionMultiplierById(multiplyer);
+    public CalculatorResponse conversionCalculation(Integer ingredientId, Integer measureUnitId, BigDecimal quantity) {
+        UnitMultiplierResponse response = allowedUnitService.getConversionMultiplier(ingredientId, measureUnitId);
+        BigDecimal multiplier = response.getConversionMultiplier();
         IngredientRequest macro = ingredientService.getIngredientById(ingredientId);
-        BigDecimal conversionToGramms = new BigDecimal(100);
-        BigDecimal sumEnergy = macro.getEnergy().multiply(amount).divide(conversionToGramms);
-        BigDecimal sumCarbs = macro.getCarbs().multiply(amount).divide(conversionToGramms);
-        BigDecimal sumFat = macro.getFat().multiply(amount).divide(conversionToGramms);
-        BigDecimal sumProtein = macro.getProtein().multiply(amount).divide(conversionToGramms);
+        BigDecimal conversionToGrams = new BigDecimal(100);
+        BigDecimal sumEnergy = macro.getEnergy().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumCarbs = macro.getCarbs().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumFat = macro.getFat().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
+        BigDecimal sumProtein = macro.getProtein().multiply(quantity).divide(conversionToGrams).multiply(multiplier);
 
-        calculatorResponse.setQuantity(quantity);
         calculatorResponse.setEnergy(sumEnergy);
         calculatorResponse.setCarbs(sumCarbs);
         calculatorResponse.setFat(sumFat);

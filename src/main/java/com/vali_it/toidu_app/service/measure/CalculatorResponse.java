@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @Data
 public class CalculatorResponse{
 
-    public Integer quantity;
     public BigDecimal energy;
     public BigDecimal carbs;
     public BigDecimal fat;
