@@ -21,8 +21,8 @@ INSERT INTO toidu_app.contact (id, user_id, first_name, last_name, address, mobi
 INSERT INTO toidu_app.contact (id, user_id, first_name, last_name, address, mobile_number, email) VALUES (DEFAULT, 4, 'Mattias', 'Üksväli', 'Hotelli 2, Tallinn', '+372 53 789 789', null);
 
 -- DAY_PLAN TABLE CONTENTS
-INSERT INTO toidu_app.day_plan (id, date_time_added, description, user_id) VALUES (DEFAULT, '2022-05-05 06:13:39.000000', 'tänane toiduplaan', 3);
-INSERT INTO toidu_app.day_plan (id, date_time_added, description, user_id) VALUES (DEFAULT, '2022-05-05 11:34:47.000000', 'lisame tänase toiduplaani', 4);
+INSERT INTO toidu_app.day_plan (id, date_added, description, user_id) VALUES (DEFAULT, '2022-05-05', 'tänane toiduplaan', 3);
+INSERT INTO toidu_app.day_plan (id, date_added, description, user_id) VALUES (DEFAULT, '2022-05-05', 'lisame tänase toiduplaani', 4);
 
 -- TAG TABLE CONTENTS
 INSERT INTO toidu_app.tag (id, description) VALUES (DEFAULT, 'supp');

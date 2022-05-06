@@ -48,4 +48,8 @@ public class PlanService {
         List<DayPlan> dayPlans = dayPlanService.getAllUserDayPlans(userId);
         return dayPlanMapper.toDtos(dayPlans);
     }
+
+    public List<DetailedDayPlanResponse> getTodaysDetailedDayPlan(Integer userId) {
+        return null;
+    }
 }

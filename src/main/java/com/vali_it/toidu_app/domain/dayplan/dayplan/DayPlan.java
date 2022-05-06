@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,8 +17,8 @@ public class DayPlan {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "date_time_added", nullable = false)
-    private Instant dateTimeAdded;
+    @Column(name = "date_added", nullable = false)
+    private LocalDate dateAdded;
 
     @Column(name = "description", nullable = false, length = 100)
     private String description;

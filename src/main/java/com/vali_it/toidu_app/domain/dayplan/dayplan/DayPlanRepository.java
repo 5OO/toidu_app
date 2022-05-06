@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface DayPlanRepository extends JpaRepository<DayPlan, Integer> {
-    @Query("select d from DayPlan d where d.user.id = ?1 order by d.dateTimeAdded DESC")
+    @Query("select d from DayPlan d where d.user.id = ?1 order by d.dateAdded DESC")
     List<DayPlan> findDayPlans(Integer userId);
 }

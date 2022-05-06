@@ -1,14 +1,16 @@
 package com.vali_it.toidu_app.domain.dayplan.dayplan;
 
 import com.vali_it.toidu_app.service.dayplan.PlanRequest;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports = Instant.class)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports = LocalDate.class)
 public interface DayPlanMapper {
-    @Mapping(target = "dateTimeAdded", expression = "java(Instant.now())")
+    @Mapping(target = "dateAdded", expression = "java(LocalDate.now())")
     DayPlan toEntity(PlanRequest request);
 
     @Mapping(target = "dayPlanId", source = "id")
