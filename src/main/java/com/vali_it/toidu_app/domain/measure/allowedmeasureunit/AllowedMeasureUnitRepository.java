@@ -1,13 +1,10 @@
 package com.vali_it.toidu_app.domain.measure.allowedmeasureunit;
 
-import com.vali_it.toidu_app.service.measure.AllowedUnitRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface AllowedMeasureUnitRepository extends JpaRepository<AllowedMeasureUnit, Integer> {
@@ -15,7 +12,7 @@ public interface AllowedMeasureUnitRepository extends JpaRepository<AllowedMeasu
     List<AllowedMeasureUnit> findAllowedMeasureUnitByIngredientId(Integer id);
 
     @Query("select a from AllowedMeasureUnit a where a.ingredient.id = ?1 and a.measureUnit.id = ?2")
-    AllowedMeasureUnit findByIngredient_IdAndMeasureUnit_Id(Integer id, Integer id1);
+    AllowedMeasureUnit findMultiplier(Integer id, Integer id1);
 
 
 

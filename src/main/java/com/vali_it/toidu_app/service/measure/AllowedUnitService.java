@@ -5,7 +5,6 @@ import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUni
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -26,9 +25,9 @@ public class AllowedUnitService {
 //                "name": "tk"
 //    }
 //    }
-    public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
+    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
-                .findAllowedMeasureUnitByIngredientId(ingredientId);
+                .findAllowedMeasureUnitByIngredientId(request.getIngredientId());
         return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
     }
 
@@ -37,9 +36,11 @@ public class AllowedUnitService {
 //    {
 //        "conversionMultiplier": 1.025
 //    }
-    public UnitMultiplierResponse getConversionMultiplier(Integer ingredientId, Integer measureUnitId) {
-        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.findByIngredient_IdAndMeasureUnit_Id(ingredientId, measureUnitId); //otsib repositorist
+    public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
+        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository
+                .findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
         unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier()); //setib UnitMultiplierResponses olevale conversionMultiplierile eelnevalt realt saadud väärtuse
         return unitMultiplierResponse;
     }
+
 }

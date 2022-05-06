@@ -22,10 +22,16 @@ public class Calculator {
     @Resource
     private CalculatorResponse calculatorResponse;
 
+    @Resource
+    private AllowedUnitRequest allowedUnitRequest;
+
 
     public CalculatorResponse conversionCalculation(CalculatorRequest calculatorRequest) {
-
-        UnitMultiplierResponse response = allowedUnitService.getConversionMultiplier(calculatorRequest.getIngredientId(), calculatorRequest.getMeasureUnitId());
+        //Calculator request mapitakse AllowedUnitRequesti ja leitakse AllowedUnitServices ConversionMultiplier
+        allowedUnitRequest.setIngredientId(calculatorRequest.getIngredientId());
+        allowedUnitRequest.setMeasureUnitId(calculatorRequest.getMeasureUnitId());
+        UnitMultiplierResponse response = allowedUnitService
+                .getConversionMultiplier(allowedUnitRequest);
         BigDecimal multiplier = response.getConversionMultiplier();
         IngredientRequest macro = ingredientService.getIngredientById(calculatorRequest.getIngredientId());
         BigDecimal conversionToGrams = new BigDecimal(100); //sajandik (g/ml) konvertimise element

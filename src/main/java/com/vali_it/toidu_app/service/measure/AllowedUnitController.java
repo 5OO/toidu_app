@@ -18,15 +18,28 @@ public class AllowedUnitController {
 
     @GetMapping("/id")
     @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
-    public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestParam Integer ingredientId) {
-        return allowedUnitService.getMeasureUnits(ingredientId);
+    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
+        return allowedUnitService.getMeasureUnits(request);
     }
 
 
     @GetMapping("/conversion")
     @Operation(summary = "leiab conversionmultiplieri id kaudu")
-    public UnitMultiplierResponse getConversionMultiplier(@RequestParam Integer ingredientId, @RequestParam Integer measureUnitId) {
-        return allowedUnitService.getConversionMultiplier(ingredientId, measureUnitId);
+    public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
+        return allowedUnitService.getConversionMultiplier(request);
     }
+
+//    @GetMapping("/id")
+//    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
+//    public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestParam Integer ingredientId) {
+//        return allowedUnitService.getMeasureUnits(ingredientId);
+//    }
+//
+//
+//    @GetMapping("/conversion")
+//    @Operation(summary = "leiab conversionmultiplieri id kaudu")
+//    public UnitMultiplierResponse getConversionMultiplier(@RequestParam Integer ingredientId, @RequestParam Integer measureUnitId) {
+//        return allowedUnitService.getConversionMultiplier(ingredientId, measureUnitId);
+//    }
 
 }
