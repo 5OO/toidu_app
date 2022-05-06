@@ -5,6 +5,7 @@ import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUni
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -13,6 +14,8 @@ public class AllowedUnitService {
     private AllowedMeasureUnitMapper allowedMeasureUnitMapper;
     @Resource
     private AllowedMeasureUnitRepository allowedMeasureUnitRepository;
+    @Resource
+    private UnitMultiplierResponse unitMultiplierResponse;
 
     public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
@@ -22,8 +25,9 @@ public class AllowedUnitService {
 
 
 
-    public AllowedMeasureUnitDto getConversionMultiplierById(Integer id) {
-        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.getById(id);
-        return allowedMeasureUnitMapper.allowedMeasureUnitToAllowedMeasureUnitDto(conversionMultiplier);
+    public UnitMultiplierResponse getConversionMultiplier(Integer ingredientId, Integer measureUnitId) {
+        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository.findByIngredient_IdAndMeasureUnit_Id(ingredientId, measureUnitId);
+        unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier());
+        return unitMultiplierResponse;
     }
 }

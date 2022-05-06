@@ -9,10 +9,10 @@ import java.util.List;
 public interface AllowedMeasureUnitMapper {
     AllowedMeasureUnit allowedMeasureUnitDtoToAllowedMeasureUnit(AllowedMeasureUnitDto allowedMeasureUnitDto);
 
-    AllowedMeasureUnitDto allowedMeasureUnitToAllowedMeasureUnitDto(AllowedMeasureUnit allowedMeasureUnit);
 
     List<AllowedMeasureUnitDto> toEntities(List<AllowedMeasureUnit> allowedMeasureUnit);
 
+//    UnitMultiplierResponse unitMultiplierDto(AllowedMeasureUnit allowedMeasureUnit);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateAllowedMeasureUnitFromAllowedMeasureUnitDto(AllowedMeasureUnitDto allowedMeasureUnitDto, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);

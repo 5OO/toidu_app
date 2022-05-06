@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class AllowedUnitRequest implements Serializable {
+public class AllowedUnitRequest{
     private Integer ingredientId;
 
 }

@@ -6,10 +6,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class AllowedMeasureUnitDto implements Serializable {
-//    private final Integer id;
-//    private final IngredientRequest ingredient;
-    private final MeasureUnitDto measureUnit;
-//    private final BigDecimal conversionMultiplier;
-//    private final String conversionDescription;
+public class AllowedMeasureUnitDto{
+
+    private  MeasureUnitDto measureUnit;
+
 }
