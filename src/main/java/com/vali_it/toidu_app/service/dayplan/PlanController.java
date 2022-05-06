@@ -41,9 +41,4 @@ public class PlanController {
     public List<DayPlanDto> getAllUserDayPlans(@RequestParam Integer userId){
         return planService.getAllUserDayPlans(userId);
     }
-
-
-
-
-
 }
