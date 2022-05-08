@@ -44,7 +44,7 @@ public class ValidationService {
 
     public void ingredientAlreadyExits(String name, boolean ingredientExists) {
         if (ingredientExists) {
-            throw new BusinessException("Sellise nimega toiduaine on juba andmebaasi sisestatud! ", " Palun vali uus toiduaine nimi ");
+            throw new BusinessException("Toiduaine " + name + " on juba andmebaasi sisestatud. Palun vali uus toiduaine nimi. ", "Choose another ingredient name.");
         }
     }
 
