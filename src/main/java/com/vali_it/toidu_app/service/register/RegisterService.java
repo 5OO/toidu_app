@@ -20,4 +20,5 @@ public class RegisterService {
         contactService.addNewContact(user, request);
         return new RegisterResponse(user.getId());
     }
+
 }

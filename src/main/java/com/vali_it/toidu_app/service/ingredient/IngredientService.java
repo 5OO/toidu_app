@@ -21,8 +21,8 @@ public class IngredientService {
     @Resource
     private IngredientMapper ingredientMapper;
 
-//    @Resource
-//    private ValidationService validationService;
+    @Resource
+    private ValidationService validationService;
 
 
 
@@ -38,7 +38,10 @@ public class IngredientService {
 
     public IngredientRequest addNewIngredient(IngredientRequest ingredientRequest) {
         Ingredient ingredient = ingredientMapper.ingredientDtoToIngredient(ingredientRequest);
-        // TODO: 03.05.2022  VAJA TEHA VALIDATION
+
+        boolean ingredientExists = ingredientRepository.ingredientAlreadyExists(ingredientRequest.getName());
+        validationService.ingredientAlreadyExits(ingredientRequest.getName(), ingredientExists);
+
         ingredientRepository.save(ingredient);
         return ingredientMapper.ingredientToIngredientDto(ingredient);
     }

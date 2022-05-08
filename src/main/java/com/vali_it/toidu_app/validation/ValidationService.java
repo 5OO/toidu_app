@@ -42,6 +42,12 @@ public class ValidationService {
         }
     }
 
+    public void ingredientAlreadyExits(String name, boolean ingredientExists) {
+        if (ingredientExists) {
+            throw new BusinessException("Toiduaine " + name + " on juba andmebaasi sisestatud. Palun vali uus toiduaine nimi. ", "Choose another ingredient name.");
+        }
+    }
+
 
 //    public void accountExists(Integer accountId, Optional<Account> account) {
 //        if (account.isEmpty()) {

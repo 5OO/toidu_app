@@ -44,4 +44,16 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
+
+    public User updateCustomerContact(RegisterRequest request) {
+        User user = userMapper.toEntity(request);
+        String username = request.getUsername();
+        boolean userExists = userRepository.existsByUsername(username);
+        validationService.userNameAlreadyExists(username, userExists);
+        userRepository.save(user);
+        return user;
+    }
+
+
+
 }
