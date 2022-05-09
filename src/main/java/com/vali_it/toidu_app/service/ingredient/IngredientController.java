@@ -18,7 +18,7 @@ public class IngredientController {
     private IngredientService ingredientService;
 
     @GetMapping("/all")
-    @Operation(summary = "leiab kõik ingredientsid")
+    @Operation(summary = "leiab kõik toiduained (ingredientid) ")
     public List<IngredientRequest> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
@@ -30,25 +30,25 @@ public class IngredientController {
     }
 
     @GetMapping("/find")
-    @Operation(summary = "leiab ingredienti nime kaudu")
+    @Operation(summary = "leiab andmebaasist toiduaineid (ingrediendid) osalise nime kaudu")
     public List<IngredientRequest> findIngredientIdByName(@RequestParam String name) {
         return ingredientService.findIngredientIdByName(name);
     }
 
     @PostMapping("/create")
-    @Operation(summary = "lisab uue toitaine")
+    @Operation(summary = "lisab uue toiduaine (ingredient)")
     public IngredientRequest addNewIngredient(@Valid @RequestBody IngredientRequest ingredientRequest) {
         return ingredientService.addNewIngredient(ingredientRequest);
     }
 
     @DeleteMapping("/id")
-    @Operation(summary = "kustutab ingredienti id järgi")
+    @Operation(summary = "kustutab toiduaine (ingredient) ID järgi")
     public void removeIngredientById(@RequestParam Integer id) {
         ingredientService.removeIngredientById(id);
     }
 
     @PutMapping("/id")
-    @Operation(summary = "uuendab ingredienti id järgi")
+    @Operation(summary = "uuendab ingredienti ID järgi")
     public void updateIngredientById(@RequestParam Integer id, @RequestBody IngredientRequest ingredientRequest) {
         ingredientService.updateIngredientById(id, ingredientRequest);
     }
