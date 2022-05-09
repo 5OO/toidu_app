@@ -8,6 +8,7 @@ import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import com.vali_it.toidu_app.domain.users.user.UserService;
 import com.vali_it.toidu_app.service.profile.ContactDto;
+import com.vali_it.toidu_app.service.profile.UserIdDto;
 import com.vali_it.toidu_app.service.userprofile.UserProfileService;
 import com.vali_it.toidu_app.service.userprofile.UserResponse;
 import com.vali_it.toidu_app.validation.ValidationService;
@@ -31,9 +32,6 @@ public class RegisterService {
     private ContactRepository contactRepository;
 
     @Resource
-    private ContactMapper contactMapper;
-
-    @Resource
     private UserRepository userRepository;
 
     @Resource
@@ -49,7 +47,9 @@ public class RegisterService {
     public RegisterRequest findUserInfoById(Integer id) {
 
         // TODO: 09.05.2022 valideerimine
-        Contact contact = contactRepository.findContactByUserId(id);
+        UserIdDto userIdDto = new UserIdDto(id);
+        Integer userId = userIdDto.getId();
+        Contact contact = contactRepository.findContactByUserId(userId);
         RegisterRequest response = new RegisterRequest();
         response.setUsername(contact.getUser().getUsername());
         response.setPassword(contact.getUser().getPassword());
