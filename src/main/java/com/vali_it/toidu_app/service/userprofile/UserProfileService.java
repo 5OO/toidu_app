@@ -1,7 +1,5 @@
 package com.vali_it.toidu_app.service.userprofile;
 
-import com.vali_it.toidu_app.domain.users.contact.ContactMapper;
-import com.vali_it.toidu_app.domain.users.contact.ContactRepository;
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserMapper;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
@@ -19,12 +17,6 @@ public class UserProfileService {
 
     @Resource
     private ValidationService validationService;
-
-    @Resource
-    private ContactMapper contactMapper;
-
-    @Resource
-    private ContactRepository contactRepository;
 
     @Resource
     private UserMapper userMapper;
@@ -46,22 +38,11 @@ public class UserProfileService {
         userMapper.updateUserFromContactDto(contactDto, user);
         userRepository.save(user);
     }
-//
-//
-//    public void updateUserInfoById(Integer id, UserResponse userResponse) {
-//        User user = getValidUserById(id);
-//        userMapper.updateUserFromUserResponse(userResponse, user);
-//        user.setUsername(userResponse.getUsername());
-//        user.setPassword(userResponse.getPassword());
-//        userRepository.save(user);
-//    }
 
     public void deleteUserById(Integer id) {
         User user = getValidUserById(id);
         userRepository.deleteById(user.getId());
     }
-
-
 
     public User getValidUserById(Integer userId) {
         Optional<User> user = userRepository.findById(userId);
