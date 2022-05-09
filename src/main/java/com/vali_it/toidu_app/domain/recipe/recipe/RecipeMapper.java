@@ -3,6 +3,8 @@ package com.vali_it.toidu_app.domain.recipe.recipe;
 import com.vali_it.toidu_app.service.recipe.UserRecipeRequest;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RecipeMapper {
     @Mapping(source = "userId", target = "user.id")
@@ -14,4 +16,7 @@ public interface RecipeMapper {
     @InheritConfiguration(name = "recipeDtoToRecipe")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateRecipeFromRecipeDto(UserRecipeRequest userRecipeRequest, @MappingTarget Recipe recipe);
+
+    List<UserRecipeRequest> toRecipes(List<Recipe> recipe);
+
 }
