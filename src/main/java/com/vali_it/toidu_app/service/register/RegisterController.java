@@ -1,14 +1,12 @@
 package com.vali_it.toidu_app.service.register;
 
-import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.service.profile.ContactDto;
-import com.vali_it.toidu_app.service.profile.UserIdDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-@RequestMapping("profile")
+@RequestMapping("/profile")
 @RestController
 public class RegisterController {
 
@@ -29,7 +27,7 @@ public class RegisterController {
 
     @PutMapping("/id")
     @Operation(summary = "Muudab kontakti user id kaudu")
-    public void updateUserInfoById(@RequestBody ContactDto contactDto) {
+    public void updateUserInfoById(@Valid @RequestBody ContactDto contactDto) {
         registerService.updateUserInfoById(contactDto);
     }
 

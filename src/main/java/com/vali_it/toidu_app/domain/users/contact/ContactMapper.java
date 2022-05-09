@@ -25,7 +25,7 @@ public interface ContactMapper {
 
 
     @Mapping(source = "userId", target = "user.id")
-    @Mapping(source = "userUsername", target = "user.username")
+    @Mapping(source = "userUserName", target = "user.username")
     @Mapping(source = "userPassword", target = "user.password")
     Contact contactDtoToContact(ContactDto contactDto);
 

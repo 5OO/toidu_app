@@ -5,7 +5,6 @@ import com.vali_it.toidu_app.domain.users.contact.ContactMapper;
 import com.vali_it.toidu_app.domain.users.contact.ContactRepository;
 import com.vali_it.toidu_app.domain.users.contact.ContactService;
 import com.vali_it.toidu_app.domain.users.user.User;
-import com.vali_it.toidu_app.domain.users.user.UserMapper;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import com.vali_it.toidu_app.domain.users.user.UserService;
 import com.vali_it.toidu_app.service.profile.ContactDto;
@@ -69,7 +68,7 @@ public class RegisterService {
         User user = userRepository.findByUserId(contactDto.getUserId());
         Contact contact = contactRepository.findContactByUserId(contactDto.getUserId());
         user.setId(contactDto.getUserId());
-        user.setUsername(contactDto.getUserUsername());
+        user.setUsername(contactDto.getUserUserName());
         user.setPassword(contactDto.getUserPassword());
         contactMapper.updateContactFromContactDto(contactDto, contact);
         contactRepository.save(contact);
