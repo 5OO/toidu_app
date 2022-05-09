@@ -1,9 +1,13 @@
 package com.vali_it.toidu_app.domain.users.user;
 
 
+import com.vali_it.toidu_app.domain.users.contact.Contact;
+import com.vali_it.toidu_app.domain.users.contact.ContactMapper;
+import com.vali_it.toidu_app.domain.users.contact.ContactRepository;
 import com.vali_it.toidu_app.service.login.LogInRequest;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
 import com.vali_it.toidu_app.service.register.RegisterResponse;
+import com.vali_it.toidu_app.service.userprofile.UserResponse;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +26,7 @@ public class UserService {
 
     @Resource
     private UserMapper userMapper;
+
 
 
 
@@ -45,7 +50,6 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
-
 
 
 }
