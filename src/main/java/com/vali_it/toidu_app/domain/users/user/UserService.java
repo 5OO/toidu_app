@@ -3,6 +3,7 @@ package com.vali_it.toidu_app.domain.users.user;
 
 import com.vali_it.toidu_app.service.login.LogInRequest;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
+import com.vali_it.toidu_app.service.register.RegisterResponse;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -37,15 +38,6 @@ public class UserService {
     }
 
     public User addNewUser(RegisterRequest request) {
-        User user = userMapper.toEntity(request);
-        String username = request.getUsername();
-        boolean userExists = userRepository.existsByUsername(username);
-        validationService.userNameAlreadyExists(username, userExists);
-        userRepository.save(user);
-        return user;
-    }
-
-    public User updateCustomerContact(RegisterRequest request) {
         User user = userMapper.toEntity(request);
         String username = request.getUsername();
         boolean userExists = userRepository.existsByUsername(username);
