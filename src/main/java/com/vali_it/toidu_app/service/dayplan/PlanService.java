@@ -72,7 +72,7 @@ public class PlanService {
 
 
         DetailedDayPlanResponse response = new DetailedDayPlanResponse();
-        response.setDayPlanId(null);
+        response.setDayPlanId(dayPlanId);
         response.setPlannedItems(plannedItems);
 
 
