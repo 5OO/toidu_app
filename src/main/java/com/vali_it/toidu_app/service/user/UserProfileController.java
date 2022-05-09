@@ -15,11 +15,11 @@ public class UserProfileController {
     @Resource
     private UserProfileService userProfileService;
 
-//    @GetMapping("/")
-//    @Operation(summary = "Profiili andmete kätte saamine")
-//    public UserProfileResponse getUserContact(@Valid @RequestBody UserProfileRequest request) {
-//        return userProfileService.getUserContact(request);
-//    }
+    @GetMapping("/")
+    @Operation(summary = "Profiili andmete kätte saamine")
+    public UserProfileResponse getUserContact(@Valid @RequestBody UserProfileRequest request) {
+        return userProfileService.getUserContact(request);
+    }
 //    @PutMapping("/update")
 //    @Operation(summary = "Profiili andmete muutmine")
 //    public UserProfileResponse updateUserContact(@Valid @RequestBody UserProfileRequest request) {

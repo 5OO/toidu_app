@@ -1,5 +1,7 @@
 package com.vali_it.toidu_app.service.user;
 
+import com.vali_it.toidu_app.domain.users.contact.Contact;
+import com.vali_it.toidu_app.domain.users.contact.ContactMapper;
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserMapper;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
@@ -19,22 +21,21 @@ public class UserProfileService {
     private ValidationService validationService;
 
     @Resource
-    private UserMapper userMapper;
+    private ContactMapper contactMapper;
 
-//    @Resource
-//    private UserProfileResponse userProfileResponse;
+    @Resource
+    private UserProfileResponse userProfileResponse;
 
-//    @Resource
-//    private UserProfileRequest userProfileRequest;
+    @Resource
+    private UserProfileRequest userProfileRequest;
 
 
-//    public UserProfileResponse getUserContact(UserProfileRequest request) {
-//        Integer response = userProfileRequest.getUserId();
-//        User result = userRepository.getById(response);
-//        userProfileResponse.getUsername() = result.getUsername();
-//
-//
-//    }
+    public UserProfileResponse getUserContact(UserProfileRequest request) {
+        Contact contact = contactMapper.toEntity();
+        User result = userRepository.getById(response);
+userProfileResponse.set
+
+    }
 
 //    public UserProfileResponse updateCustomerContact(UserProfileRequest request) {
 //        User user = userMapper.toEntity(request);
