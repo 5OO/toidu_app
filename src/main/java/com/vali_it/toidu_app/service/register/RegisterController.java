@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.service.register;
 
 import com.vali_it.toidu_app.domain.users.user.User;
+import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.profile.UserIdDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +27,14 @@ public class RegisterController {
         return registerService.findUserInfoById(userId);
     }
 
-    @PutMapping("/{userId}")
-    @Operation(summary = "Muudab kontakti id kaudu")
-    public void updateUserInfoById(@PathVariable Integer userId, @RequestBody RegisterRequest request) {
-        registerService.updateUserInfoById(userId, request);
+    @PutMapping("/id")
+    @Operation(summary = "Muudab kontakti user id kaudu")
+    public void updateUserInfoById(@RequestBody ContactDto contactDto) {
+        registerService.updateUserInfoById(contactDto);
     }
 
     @DeleteMapping("/id")
-    @Operation(summary = "Muudab kontakti id kaudu")
+    @Operation(summary = "kustutab kontakti user id kaudu")
     public void deleteUserInfoById(@Valid @RequestParam Integer userId) {
         registerService.deleteUserInfoById(userId);
     }

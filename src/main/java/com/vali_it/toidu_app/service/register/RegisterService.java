@@ -5,12 +5,12 @@ import com.vali_it.toidu_app.domain.users.contact.ContactMapper;
 import com.vali_it.toidu_app.domain.users.contact.ContactRepository;
 import com.vali_it.toidu_app.domain.users.contact.ContactService;
 import com.vali_it.toidu_app.domain.users.user.User;
+import com.vali_it.toidu_app.domain.users.user.UserMapper;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import com.vali_it.toidu_app.domain.users.user.UserService;
 import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.profile.UserIdDto;
 import com.vali_it.toidu_app.service.userprofile.UserProfileService;
-import com.vali_it.toidu_app.service.userprofile.UserResponse;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +37,10 @@ public class RegisterService {
     @Resource
     private ValidationService validationService;
 
+    @Resource
+    private ContactMapper contactMapper;
+
+
     public RegisterResponse registerNewCustomer(RegisterRequest request) {
         User user = userService.addNewUser(request);
         contactService.addNewContact(user, request);
@@ -61,19 +65,17 @@ public class RegisterService {
         return response;
     }
 
-    public void updateUserInfoById(Integer userId, RegisterRequest request) {
-        UserResponse user = new UserResponse();
-        ContactDto contact = new ContactDto();
-        user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
-        contact.setFirstName(request.getFirstName());
-        contact.setLastName(request.getLastName());
-        contact.setAddress(request.getAddress());
-        contact.setMobileNumber(request.getMobileNumber());
-        contact.setEmail(request.getEmail());
-        userProfileService.updateUserInfoById(userId, user);
-        contactService.updateContactById(userId, contact);
+    public void updateUserInfoById(ContactDto contactDto) {
+        User user = userRepository.findByUserId(contactDto.getUserId());
+        Contact contact = contactRepository.findContactByUserId(contactDto.getUserId());
+        user.setId(contactDto.getUserId());
+        user.setUsername(contactDto.getUserUsername());
+        user.setPassword(contactDto.getUserPassword());
+        contactMapper.updateContactFromContactDto(contactDto, contact);
+        contactRepository.save(contact);
+        userRepository.save(user);
     }
+
 
     public void deleteUserInfoById(Integer userId) {
         contactService.deleteContactById(userId);

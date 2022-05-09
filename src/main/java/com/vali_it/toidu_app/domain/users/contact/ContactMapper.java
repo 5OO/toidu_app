@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.users.contact;
 
+import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
 import com.vali_it.toidu_app.service.register.RegisterResponse;
@@ -17,13 +18,13 @@ public interface ContactMapper {
 
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateContactFromContactDto(RegisterRequest request, @MappingTarget Contact contact);
+    void updateContactFromContactDto(ContactDto contactDto, @MappingTarget Contact contact);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateRequestFromRequestDto(RegisterRequest request, @MappingTarget RegisterRequest registerRequest);
 
 
-//    @Mapping(source = "userId", target = "user.id")
+    @Mapping(source = "userId", target = "user.id")
     @Mapping(source = "userUsername", target = "user.username")
     @Mapping(source = "userPassword", target = "user.password")
     Contact contactDtoToContact(ContactDto contactDto);
@@ -31,7 +32,4 @@ public interface ContactMapper {
     @InheritInverseConfiguration(name = "contactDtoToContact")
     ContactDto contactToContactDto(Contact contact);
 
-    @InheritConfiguration(name = "contactDtoToContact")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateContactFromContactDto(ContactDto contactDto, @MappingTarget Contact contact);
 }

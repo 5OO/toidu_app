@@ -21,8 +21,8 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
-    public void updateContactById(Integer userId, ContactDto contactDto) {
-        Contact contact = contactRepository.findContactByUserId(userId);
+    public void updateContactById(ContactDto contactDto) {
+        Contact contact = contactRepository.findContactByUserId(contactDto.getUserId());
         contactMapper.updateContactFromContactDto(contactDto, contact);
         contactRepository.save(contact);
     }

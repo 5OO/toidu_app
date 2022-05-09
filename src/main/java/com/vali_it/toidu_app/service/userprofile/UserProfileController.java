@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.service.userprofile;
 
+import com.vali_it.toidu_app.service.profile.ContactDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,8 @@ public class UserProfileController {
 
     @PutMapping("/id")
     @Operation(summary = "Useri andmete muutmine")
-    public void updateUserInfoById(@RequestParam Integer id, @RequestBody UserResponse userResponse) {
-        userProfileService.updateUserInfoById(id, userResponse);
+    public void updateUserInfoById(@RequestBody ContactDto contactDto) {
+        userProfileService.updateUserInfoById(contactDto);
     }
 
     @DeleteMapping ("/id")
