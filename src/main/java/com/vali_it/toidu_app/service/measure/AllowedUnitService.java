@@ -25,9 +25,9 @@ public class AllowedUnitService {
 //                "name": "tk"
 //    }
 //    }
-    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
+    public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
-                .findAllowedMeasureUnitByIngredientId(request.getIngredientId());
+                .findAllowedMeasureUnitByIngredientId(ingredientId);
         return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
     }
 
@@ -37,8 +37,8 @@ public class AllowedUnitService {
 //        "conversionMultiplier": 1.025
 //    }
     public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
-        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository
-                .findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
+        AllowedMeasureUnit conversionMultiplier =
+                allowedMeasureUnitRepository.findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
         unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier()); //setib UnitMultiplierResponses olevale conversionMultiplierile eelnevalt realt saadud väärtuse
         return unitMultiplierResponse;
     }

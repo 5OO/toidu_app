@@ -18,10 +18,17 @@ public class AllowedUnitController {
 
     @GetMapping("/id")
     @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
-    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
-        return allowedUnitService.getMeasureUnits(request);
+    public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
+        return allowedUnitService.getMeasureUnits(ingredientId);
     }
 
+//
+//    @GetMapping("/id")
+//    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
+//    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
+//        return allowedUnitService.getMeasureUnits(request);
+//    }
+//
 
     @GetMapping("/conversion")
     @Operation(summary = "leiab conversionmultiplieri id kaudu")
