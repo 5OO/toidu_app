@@ -79,6 +79,7 @@ public class RegisterService {
     public void deleteUserInfoById(Integer userId) {
         contactService.deleteContactById(userId);
         userProfileService.deleteUserById(userId);
+        // TODO: 10.05.2022 User role ei luba kustutada, tabeli seose tõttu
     }
 
     public User getValidUserById(Integer userId) {
