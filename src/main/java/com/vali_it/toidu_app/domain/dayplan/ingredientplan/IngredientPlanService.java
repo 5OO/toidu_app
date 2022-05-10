@@ -7,9 +7,13 @@ import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientRepository;
 import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnit;
 import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitRepository;
 import com.vali_it.toidu_app.service.dayplan.PlanIngredientRequest;
+import com.vali_it.toidu_app.service.measure.Calculator;
+import com.vali_it.toidu_app.service.measure.CalculatorRequest;
+import com.vali_it.toidu_app.service.measure.CalculatorResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -30,6 +34,9 @@ public class IngredientPlanService {
 
     @Resource
     private IngredientPlanRepository ingredientPlanRepository;
+
+    @Resource
+    private Calculator calculator;
 
 
     public void addNewIngredientPlan(PlanIngredientRequest request) {
@@ -52,5 +59,9 @@ public class IngredientPlanService {
 
     public List<IngredientPlan> getPlannedIngredients(Integer userId) {
         return ingredientPlanRepository.findPlannedIngredients(userId);
+    }
+
+    public CalculatorResponse getPlanIngredientMacro(CalculatorRequest request) {
+        return calculator.conversionCalculation(request);
     }
 }

@@ -7,6 +7,7 @@ import com.vali_it.toidu_app.domain.users.contact.ContactService;
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import com.vali_it.toidu_app.domain.users.user.UserService;
+import com.vali_it.toidu_app.domain.users.userrole.UserRoleService;
 import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.profile.UserIdDto;
 import com.vali_it.toidu_app.service.userprofile.UserProfileService;
@@ -38,6 +39,9 @@ public class RegisterService {
 
     @Resource
     private ContactMapper contactMapper;
+
+    @Resource
+    private UserRoleService userRoleService;
 
 
     public RegisterResponse registerNewCustomer(RegisterRequest request) {
@@ -77,9 +81,10 @@ public class RegisterService {
 
 
     public void deleteUserInfoById(Integer userId) {
+        userRoleService.deleteUserRoleById(userId);
         contactService.deleteContactById(userId);
         userProfileService.deleteUserById(userId);
-        // TODO: 10.05.2022 User role ei luba kustutada, tabeli seose tõttu
+
     }
 
     public User getValidUserById(Integer userId) {

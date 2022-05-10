@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.users.userrole;
 
+import com.vali_it.toidu_app.domain.users.contact.Contact;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +22,10 @@ public class UserRoleService {
         return userRoleRepository.findUserRole(userId);
     }
 
+    public void deleteUserRoleById(Integer userId) {
+        UserRole userRole = userRoleRepository.findUserRole(userId);
+        userRoleRepository.deleteById(userRole.getUser().getId());
+    }
 //
 //    public void addNewUserRoleRelationship(Integer userId, Integer roleId) {
 //        User user = userRepository.getById(4);
