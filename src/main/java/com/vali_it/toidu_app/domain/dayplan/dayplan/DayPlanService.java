@@ -3,7 +3,6 @@ package com.vali_it.toidu_app.domain.dayplan.dayplan;
 
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
-import com.vali_it.toidu_app.service.dayplan.DetailedDayPlanResponse;
 import com.vali_it.toidu_app.service.dayplan.PlanRequest;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
@@ -41,12 +40,12 @@ public class DayPlanService {
         return dayPlanRepository.findDayPlans(userId);
     }
 
-    public Integer getValidDayPlanId(Integer userId) {
+    public DayPlan getValidDayPlan(Integer userId) {
         Optional<DayPlan> dayPlan = dayPlanRepository.findDayPlan(userId, LocalDate.now());
 
         validationService.validDayPlanExits(dayPlan);
 
-        return dayPlan.get().getId();
+        return dayPlan.get();
     }
 
 

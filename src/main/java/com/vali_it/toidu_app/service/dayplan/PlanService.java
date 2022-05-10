@@ -61,9 +61,10 @@ public class PlanService {
     }
 
     public DetailedDayPlanResponse getTodaysDetailedDayPlan(Integer userId) {
-        Integer dayPlanId = dayPlanService.getValidDayPlanId(userId);
+        DayPlan dayPlan = dayPlanService.getValidDayPlan(userId);
 
         // TODO: 06.05.2022 energy
+        Integer dayPlanId = dayPlan.getId();
         List<PlannedItem> plannedIngredients = getPlannedIngredients(dayPlanId);
         // TODO: 06.05.2022 energy
         List<PlannedItem> plannedRecipes = getPlannedRecipes(dayPlanId);
@@ -73,6 +74,8 @@ public class PlanService {
 
         DetailedDayPlanResponse response = new DetailedDayPlanResponse();
         response.setDayPlanId(dayPlanId);
+        response.setDayPlanDescription(dayPlan.getDescription());
+        response.setDayPlanDate(dayPlan.getDateAdded());
         response.setPlannedItems(plannedItems);
 
 
