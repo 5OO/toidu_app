@@ -1,6 +1,7 @@
 package com.vali_it.toidu_app.domain.users.contact;
 
 import com.vali_it.toidu_app.domain.users.user.User;
+import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,15 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
+    public void updateContactById(ContactDto contactDto) {
+        Contact contact = contactRepository.findContactByUserId(contactDto.getUserId());
+        contactMapper.updateContactFromContactDto(contactDto, contact);
+        contactRepository.save(contact);
+    }
 
-//    public RegisterRequest addNewContact(RegisterRequest request) {
-//        Contact contact = contactMapper.toContact(request);
-//        contactRepository.save(contact);
-//        return contactMapper.toContact(contact);
-//    }
+
+    public void deleteContactById(Integer userId) {
+            Contact contact = contactRepository.findContactByUserId(userId);
+            contactRepository.deleteById(contact.getId());
+    }
 }

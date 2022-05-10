@@ -1,17 +1,16 @@
-package com.vali_it.toidu_app.service.register;
+package com.vali_it.toidu_app.service.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RegisterRequest implements Serializable {
-    private String username;
-    private String password;
+public class ContactDto{
+    private Integer userId;
+    private String userUserName;
+    private String userPassword;
     private String firstName;
     private String lastName;
     private String address;
