@@ -1,6 +1,5 @@
 package com.vali_it.toidu_app.service.measure;
 
-import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +19,17 @@ public class AllowedUnitController {
 //        return allowedUnitService.getMeasureUnits(ingredientId);
 //    }
 
+//
+//    @PostMapping("/id")
+//    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
+//    public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestBody AllowedUnitRequest request) {
+//        return allowedUnitService.getMeasureUnits(request);
+//    }
 
-    @PostMapping("/id")
+
+    @GetMapping("/id")
     @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
-    public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestBody AllowedUnitRequest request) {
-        return allowedUnitService.getMeasureUnits(request);
-    }
-
-
-    @GetMapping("/unit")
-    @Operation(summary = "kohendatud otsing")
-public List <MeasureUnitDto> getMeasureUnitsByIngredientId(@RequestParam Integer ingredeintId) {
+    public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(@RequestParam Integer ingredeintId) {
         return allowedUnitService.getMeasureUnitsByIngredientId(ingredeintId);
     }
 

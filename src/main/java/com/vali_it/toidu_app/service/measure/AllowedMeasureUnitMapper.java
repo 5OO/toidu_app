@@ -18,6 +18,7 @@ public interface AllowedMeasureUnitMapper {
 
     List<AllowedMeasureUnitDto> toEntities(List<AllowedMeasureUnit> allowedMeasureUnit);
 
+    List<AllowedMeasureUnitResponse> toList(List<AllowedMeasureUnit> allowedMeasureUnits);
 
 //    List<MeasureUnitDto> allowedMeasureUnitsToMeasureUnits(List<AllowedMeasureUnit> allowedMeasureUnits);
 
@@ -25,4 +26,15 @@ public interface AllowedMeasureUnitMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateAllowedMeasureUnitFromAllowedMeasureUnitDto(AllowedMeasureUnitDto allowedMeasureUnitDto, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
+
+    @Mapping(source = "measureUnitId", target = "measureUnit.id")
+    @Mapping(source = "measureUnitName", target = "measureUnit.name")
+    AllowedMeasureUnit allowedMeasureUnitDto1ToAllowedMeasureUnit(AllowedMeasureUnitResponse allowedMeasureUnitResponse);
+
+    @InheritInverseConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
+    AllowedMeasureUnitResponse allowedMeasureUnitToAllowedMeasureUnitDto1(AllowedMeasureUnit allowedMeasureUnit);
+
+    @InheritConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateAllowedMeasureUnitFromAllowedMeasureUnitDto1(AllowedMeasureUnitResponse allowedMeasureUnitResponse, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
 }
