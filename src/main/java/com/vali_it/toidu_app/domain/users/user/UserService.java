@@ -25,6 +25,9 @@ public class UserService {
     private ValidationService validationService;
 
     @Resource
+    private ContactRepository contactRepository;
+
+    @Resource
     private UserMapper userMapper;
 
 
@@ -35,8 +38,11 @@ public class UserService {
 
         Optional<User> user = userRepository.findByUsernameAndPassword(request.getUsername(), request.getPassword());
 
+
+
         // Anname meetodis kaasea Matrjoksa optional
         validationService.userExists(user);
+
 
         // Võtame Matrjoska Optional seest .get() abiga välja Matrjoska User ja tagastame selle returniga
         return user.get();   // TODO: 29.04.2022 Rain-le küsimus -   mida võetakse get-ga välja siit?

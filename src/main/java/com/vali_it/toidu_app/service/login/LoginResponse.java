@@ -8,5 +8,7 @@ public class LoginResponse {
 
     private Integer userId;
     private Integer userRoleId;
+    private String personName;
 
 }
+

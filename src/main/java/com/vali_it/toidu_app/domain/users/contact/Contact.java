@@ -34,5 +34,4 @@ public class Contact {
 
     @Column(name = "email")
     private String email;
-
 }
