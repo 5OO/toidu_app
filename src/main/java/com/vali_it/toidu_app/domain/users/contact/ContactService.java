@@ -20,16 +20,17 @@ public class ContactService {
         contact.setUser(user);
         contactRepository.save(contact);
     }
-
     public void updateContactById(ContactDto contactDto) {
         Contact contact = contactRepository.findContactByUserId(contactDto.getUserId());
         contactMapper.updateContactFromContactDto(contactDto, contact);
         contactRepository.save(contact);
+
     }
-
-
     public void deleteContactById(Integer userId) {
             Contact contact = contactRepository.findContactByUserId(userId);
             contactRepository.deleteById(contact.getId());
+    }
+    public Contact getUserFirstLastNameById(Integer userId) {
+        return contactRepository.findUserFirstAndLastName(userId);
     }
 }
