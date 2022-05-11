@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class AllowedUnitService {
+
     @Resource
     private AllowedMeasureUnitMapper allowedMeasureUnitMapper;
     @Resource
@@ -17,19 +18,6 @@ public class AllowedUnitService {
     private UnitMultiplierResponse unitMultiplierResponse;
 
 
- //Otsib ingredientId järgi sellele vastavad mõõtühikud ja nende id
- // Response JSON
-//    {
-//        "measureUnit": {
-//        "id": 3,
-//                "name": "tk"
-//    }
-//    }
-    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
-        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
-                .findAllowedMeasureUnitByIngredientId(request.getIngredientId());
-        return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
-    }
 
 //Konvertimis kordaja kätte saamine ingredientId ja measureUnitId kaudu
 //    Response JSON
@@ -37,10 +25,23 @@ public class AllowedUnitService {
 //        "conversionMultiplier": 1.025
 //    }
     public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
-        AllowedMeasureUnit conversionMultiplier = allowedMeasureUnitRepository
-                .findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
+        AllowedMeasureUnit conversionMultiplier =
+                allowedMeasureUnitRepository.findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
         unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier()); //setib UnitMultiplierResponses olevale conversionMultiplierile eelnevalt realt saadud väärtuse
         return unitMultiplierResponse;
     }
 
+    //Otsib ingredientId järgi sellele vastavad mõõtühikud ja nende id
+    // Response JSON
+//    {
+//        "measureUnit": {
+//        "id": 3,
+//                "name": "tk"
+//    }
+//    }
+
+    public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(Integer ingredeintId) {
+        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.findByIngredientId(ingredeintId);
+        return allowedMeasureUnitMapper.toList(allowedMeasureUnits);
+    }
 }

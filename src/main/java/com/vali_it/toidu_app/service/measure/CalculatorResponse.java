@@ -3,7 +3,6 @@ package com.vali_it.toidu_app.service.measure;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 @Service
 @Data

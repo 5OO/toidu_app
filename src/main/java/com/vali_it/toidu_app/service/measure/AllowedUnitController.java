@@ -1,10 +1,7 @@
 package com.vali_it.toidu_app.service.measure;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,16 +13,31 @@ public class AllowedUnitController {
     @Resource
     private AllowedUnitService allowedUnitService;
 
+//    @GetMapping("/id")
+//    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
+//    public List<MeasureUnitDto> getMeasureUnits(Integer ingredientId) {
+//        return allowedUnitService.getMeasureUnits(ingredientId);
+//    }
+
+//
+//    @PostMapping("/id")
+//    @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
+//    public List<AllowedMeasureUnitDto> getMeasureUnits(@RequestBody AllowedUnitRequest request) {
+//        return allowedUnitService.getMeasureUnits(request);
+//    }
+
+
     @GetMapping("/id")
     @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
-    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
-        return allowedUnitService.getMeasureUnits(request);
+    public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(@RequestParam Integer ingredientId) {
+        return allowedUnitService.getMeasureUnitsByIngredientId(ingredientId);
     }
 
 
-    @GetMapping("/conversion")
+    @PostMapping("/conversion")
     @Operation(summary = "leiab conversionmultiplieri id kaudu")
-    public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
+    public UnitMultiplierResponse getConversionMultiplier(@RequestBody AllowedUnitRequest request) {
+
         return allowedUnitService.getConversionMultiplier(request);
     }
 

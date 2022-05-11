@@ -1,6 +1,5 @@
 package com.vali_it.toidu_app.domain.users.user;
 
-import com.vali_it.toidu_app.domain.users.contact.Contact;
 import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.register.RegisterRequest;
 import com.vali_it.toidu_app.service.userprofile.UserRequest;

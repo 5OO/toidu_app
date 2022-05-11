@@ -1,10 +1,7 @@
 package com.vali_it.toidu_app.service.measure;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -16,9 +13,9 @@ public class CalculatorController {
     private Calculator calculator;
 
 
-    @GetMapping("/conversion")
+    @PostMapping("/conversion")
     @Operation(summary = "arvutus")
-    public CalculatorResponse conversionCalculation(CalculatorRequest calculatorRequest) {
+    public CalculatorResponse conversionCalculation(@RequestBody CalculatorRequest calculatorRequest) {
         return calculator.conversionCalculation(calculatorRequest);
     }
 

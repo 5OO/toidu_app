@@ -1,10 +1,16 @@
 package com.vali_it.toidu_app.service.dayplan;
 
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlanDto;
+import com.vali_it.toidu_app.domain.dayplan.ingredientplan.IngredientPlanService;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
+import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnit;
+import com.vali_it.toidu_app.service.measure.CalculatorRequest;
+import com.vali_it.toidu_app.service.measure.CalculatorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -13,6 +19,9 @@ public class PlanController {
 
     @Resource
     private PlanService planService;
+
+    @Resource
+    private IngredientPlanService ingredientPlanService;
 
     @PostMapping
     @Operation(summary = "lisame uue päevaplaani")
@@ -46,6 +55,12 @@ public class PlanController {
     @Operation(summary = "Kuvab kasjutaja tänast päevaplaani")
     public DetailedDayPlanResponse getTodaysDetailedDayPlan(@RequestParam Integer userId) {
         return planService.getTodaysDetailedDayPlan(userId);
+    }
+
+    @PostMapping("/calc")
+    @Operation(summary = "arvutab ja tagastab makrod")
+    public CalculatorResponse getPlanIngredientMacro(@RequestBody CalculatorRequest request) {
+        return ingredientPlanService.getPlanIngredientMacro(request);
     }
 
     @DeleteMapping
