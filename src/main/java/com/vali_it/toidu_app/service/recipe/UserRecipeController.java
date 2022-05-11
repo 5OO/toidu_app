@@ -27,8 +27,15 @@ public class UserRecipeController {
     }
 
     @GetMapping
-    @Operation(summary = "leiame retsepti nimeosa järgi")
+    @Operation(summary = "leiame retseptid nimeosa (string)  järgi")
     public List<UserRecipeRequest> findRecipeByName(@RequestParam String name) {
         return userRecipeService.findRecipeByName(name);
+    }
+
+    @GetMapping("/recipes")
+    @Operation(summary = "leiame retseptid string  järgi, vastus koos recipeID-ga")
+    public List<UserRecipeNameInquiry> findRecipeByString(@RequestParam String name) {
+        List<UserRecipeNameInquiry> recipeByString = userRecipeService.findRecipeByString(name);
+        return recipeByString;
     }
 }

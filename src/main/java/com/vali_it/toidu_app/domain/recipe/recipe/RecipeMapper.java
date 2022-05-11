@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.recipe.recipe;
 
+import com.vali_it.toidu_app.service.recipe.UserRecipeNameInquiry;
 import com.vali_it.toidu_app.service.recipe.UserRecipeRequest;
 import org.mapstruct.*;
 
@@ -18,5 +19,11 @@ public interface RecipeMapper {
     void updateRecipeFromRecipeDto(UserRecipeRequest userRecipeRequest, @MappingTarget Recipe recipe);
 
     List<UserRecipeRequest> toRecipes(List<Recipe> recipe);
+
+
+    @Mapping(target = "recipeId", source = "id")
+    UserRecipeNameInquiry recipesToDto(Recipe recipes);
+
+    List<UserRecipeNameInquiry> recipesToDtos(List<Recipe> recipes);
 
 }

@@ -39,4 +39,9 @@ public class UserRecipeService {
 
         return recipeMapper.toRecipes(recipes);
     }
+
+    public List<UserRecipeNameInquiry> findRecipeByString(String name) {
+        List<Recipe> recipes = recipeRepository.findByName(name);
+        return recipeMapper.recipesToDtos(recipes);
+    }
 }
