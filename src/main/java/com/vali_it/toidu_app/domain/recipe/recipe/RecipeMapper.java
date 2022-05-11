@@ -22,7 +22,7 @@ public interface RecipeMapper {
 
 
     @Mapping(target = "recipeId", source = "id")
-    UserRecipeNameInquiry recipesToDto(Recipe recipes);
+    UserRecipeNameInquiry recipesToDto(Recipe recipe);
 
     List<UserRecipeNameInquiry> recipesToDtos(List<Recipe> recipes);
 
