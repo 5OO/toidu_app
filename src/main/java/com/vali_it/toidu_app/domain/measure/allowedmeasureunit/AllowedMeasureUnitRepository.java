@@ -11,6 +11,10 @@ public interface AllowedMeasureUnitRepository extends JpaRepository<AllowedMeasu
     @Query("select a from AllowedMeasureUnit a where a.ingredient.id = ?1")
     List<AllowedMeasureUnit> findAllowedMeasureUnitByIngredientId(Integer id);
 
+
+
+
+
     @Query("select a from AllowedMeasureUnit a where a.ingredient.id = ?1 and a.measureUnit.id = ?2")
     AllowedMeasureUnit findMultiplier(Integer id, Integer id1);
 

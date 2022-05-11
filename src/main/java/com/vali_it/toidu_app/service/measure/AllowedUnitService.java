@@ -2,13 +2,16 @@ package com.vali_it.toidu_app.service.measure;
 
 import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUnit;
 import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUnitRepository;
+import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitDto;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class AllowedUnitService {
+
     @Resource
     private AllowedMeasureUnitMapper allowedMeasureUnitMapper;
     @Resource
@@ -25,9 +28,9 @@ public class AllowedUnitService {
 //                "name": "tk"
 //    }
 //    }
-    public List<AllowedMeasureUnitDto> getMeasureUnits(Integer ingredientId) {
+    public List<AllowedMeasureUnitDto> getMeasureUnits(AllowedUnitRequest request) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository
-                .findAllowedMeasureUnitByIngredientId(ingredientId);
+                .findAllowedMeasureUnitByIngredientId(request.getIngredientId());
         return allowedMeasureUnitMapper.toEntities(allowedMeasureUnits);
     }
 
@@ -43,4 +46,9 @@ public class AllowedUnitService {
         return unitMultiplierResponse;
     }
 
+
+    public List<MeasureUnitDto> getMeasureUnitsByIngredientId(Integer ingredeintId) {
+        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.getById(ingredeintId);
+        return null;
+    }
 }
