@@ -9,6 +9,4 @@ import java.time.Instant;
 public class PlanRecipeRequest {
     private Integer dayPlanId;
     private Integer recipeId;
-    private Instant dateTimeAdded;
-
 }

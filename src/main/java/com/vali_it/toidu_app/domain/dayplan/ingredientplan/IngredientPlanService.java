@@ -53,4 +53,8 @@ public class IngredientPlanService {
     public List<IngredientPlan> getPlannedIngredients(Integer userId) {
         return ingredientPlanRepository.findPlannedIngredients(userId);
     }
+
+    public void deleteItemFromDayPlan(Integer itemId) {
+        ingredientPlanRepository.deleteById(itemId);
+    }
 }

@@ -98,4 +98,12 @@ public class PlanService {
         List<PlanRecipe> plannedRecipes = planRecipeService.getPlannedRecipes(userId);
         return planRecipeMapper.toPlannedItems(plannedRecipes);
     }
+
+    public void deleteItemFromDayPlan(Integer itemId, Boolean isRecipe) {
+        if (isRecipe) {
+            planRecipeService.deleteItemFromDayPlan(itemId);
+        } else {
+            ingredientPlanService.deleteItemFromDayPlan(itemId);
+        }
+    }
 }

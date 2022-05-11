@@ -43,4 +43,8 @@ public class PlanRecipeService {
     public List<PlanRecipe> getPlannedRecipes(Integer userId) {
         return planRecipeRepository.findPlannedRecipes(userId);
     }
+
+    public void deleteItemFromDayPlan(Integer itemId) {
+        planRecipeRepository.deleteById(itemId);
+    }
 }
