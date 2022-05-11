@@ -42,7 +42,6 @@ public class AllowedUnitService {
 
     public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(Integer ingredeintId) {
         List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.findByIngredientId(ingredeintId);
-        List<AllowedMeasureUnitResponse> measureUnitDtos = allowedMeasureUnitMapper.toList(allowedMeasureUnits);
-        return measureUnitDtos;
+        return allowedMeasureUnitMapper.toList(allowedMeasureUnits);
     }
 }
