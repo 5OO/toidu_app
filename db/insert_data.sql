@@ -68,8 +68,8 @@ INSERT INTO toidu_app.ingredient_in_ingredient_group (id, ingredient_id, ingredi
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'g');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'kg');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'tk');
-INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
 INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'ml');
+INSERT INTO toidu_app.measure_unit (id, name) VALUES (DEFAULT, 'l');
 
 -- RECIPE TABLE CONTENTS
 INSERT INTO toidu_app.recipe (id, user_id, name, description, instructions, public_recipe) VALUES (DEFAULT, 3, 'Pankoogid', 'Õhukesed pannkoogid', null, true);
@@ -79,13 +79,15 @@ INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 4)
 INSERT INTO toidu_app.recipe_tags (id, recipe_id, tag_id) VALUES (DEFAULT, 1, 3);
 
 -- RECIPE_INGREDIENT TABLE CONTENTS
-INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 3, 5, 100.00, '2022-04-28', null);
+INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 3, 4, 100.00, '2022-04-28', null);
 INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 4, 3, 3.00, '2022-04-28', null);
 INSERT INTO toidu_app.recipe_ingredient (id, recipe_id, ingredient_id, measure_unit_id, quantity, date_from, date_to) VALUES (DEFAULT, 1, 5, 1, 75.00, '2022-04-28', null);
 
 -- ALLOWED_MEASURE_UNIT TABLE CONTENTS
-INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 3, 5, 1.025, 'teeme piima ml grammideks');
-INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 3, 4, 1025.000, 'muudame piima liitrid milliliitriteks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 3, 1, 1.00, 'piim grammides');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 3, 4, 1.025, 'teeme piima ml grammideks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 3, 5, 1025.000, 'muudame piima liitrid milliliitriteks');
+INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 4, 1, 1.000, 'muna grammides');
 INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 4, 3, 60.000, '1 muna on 60 gr.');
 INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 5, 1, 1.000, 'grammid jahu jaoks');
 INSERT INTO toidu_app.allowed_measure_unit (id, ingredient_id, measure_unit_id, conversion_multiplier, conversion_description) VALUES (DEFAULT, 5, 2, 1000.000, 'teeme kg grammideks');
