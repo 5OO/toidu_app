@@ -1,9 +1,12 @@
 package com.vali_it.toidu_app.service.recipe;
 
+import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipeService;
 import com.vali_it.toidu_app.domain.recipe.recipe.Recipe;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeMapper;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeRepository;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeService;
+import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredient;
+import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientMapper;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientService;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,12 @@ public class UserRecipeService {
 
     @Resource
     private RecipeIngredientService recipeIngredientService;
+
+    @Resource
+    private PlanRecipeService planRecipeService;
+
+    @Resource
+    private RecipeIngredientMapper recipeIngredientMapper;
 
     @Resource
     private RecipeRepository recipeRepository;
@@ -43,5 +52,11 @@ public class UserRecipeService {
     public List<UserRecipeNameInquiry> findRecipeByString(String name) {
         List<Recipe> recipes = recipeRepository.findByName(name);
         return recipeMapper.recipesToDtos(recipes);
+    }
+
+    public List<UserRecipeComponentRequest> findRecipeComponents(Integer itemId) {
+        Integer recipeId = planRecipeService.findRecipeId(itemId);
+        List<RecipeIngredient> recipeIngredientList =  recipeIngredientService.findRecipeComponents(recipeId);
+        return recipeIngredientMapper.recipeToDTOs(recipeIngredientList);
     }
 }

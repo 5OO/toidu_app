@@ -38,4 +38,10 @@ public class UserRecipeController {
         List<UserRecipeNameInquiry> recipeByString = userRecipeService.findRecipeByString(name);
         return recipeByString;
     }
+
+    @GetMapping("/info")
+    @Operation(summary = "leiame retsepti ja kuvame selle koostiosade (toiduainete/ingredient) loetelu koos energiaga")
+    public List<UserRecipeComponentRequest> findRecipeComponents(@RequestParam Integer recipeId) {
+        return userRecipeService.findRecipeComponents(recipeId);
+    }
 }

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -46,5 +45,9 @@ public class PlanRecipeService {
 
     public void deleteItemFromDayPlan(Integer itemId) {
         planRecipeRepository.deleteById(itemId);
+    }
+
+    public Integer findRecipeId(Integer itemId) {
+        return planRecipeRepository.getById(itemId).getRecipe().getId();
     }
 }

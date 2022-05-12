@@ -11,7 +11,7 @@ import com.vali_it.toidu_app.service.recipe.UserIngredientRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.time.Instant;
+import java.util.List;
 
 @Service
 public class RecipeIngredientService {
@@ -45,6 +45,11 @@ public class RecipeIngredientService {
         recipeIngredient.setMeasureUnit(measureUnit);
 
         recipeIngredientRepository.save(recipeIngredient);
+
+    }
+
+    public List<RecipeIngredient> findRecipeComponents(Integer recipeId) {
+        return recipeIngredientRepository.findRecipeInfo(recipeId);
 
     }
 }
