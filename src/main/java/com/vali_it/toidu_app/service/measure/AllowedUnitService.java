@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AllowedUnitService {
@@ -39,9 +40,17 @@ public class AllowedUnitService {
 //                "name": "tk"
 //    }
 //    }
-
-    public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(Integer ingredeintId) {
-        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.findByIngredientId(ingredeintId);
+    public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(Integer ingredientId) {
+        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.findByIngredientId(ingredientId);
         return allowedMeasureUnitMapper.toList(allowedMeasureUnits);
+    }
+
+    public AllowedMeasureUnitResponse getFirstMeasureUnitByIngredientId(Integer ingredientId) {
+        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitRepository.findByIngredientId(ingredientId);
+        Optional<AllowedMeasureUnit> firstAllowedMeasureUnit = allowedMeasureUnits.stream().findFirst();
+        AllowedMeasureUnitResponse response = new AllowedMeasureUnitResponse();
+        response.setMeasureUnitId(firstAllowedMeasureUnit.get().getMeasureUnit().getId());
+        response.setMeasureUnitName(firstAllowedMeasureUnit.get().getMeasureUnit().getName());
+        return response;
     }
 }

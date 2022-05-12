@@ -1,5 +1,6 @@
 package com.vali_it.toidu_app.domain.ingredient.ingredient;
 
+import com.vali_it.toidu_app.service.ingredient.IngredientInfoDto;
 import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
 import org.mapstruct.*;
 
@@ -10,6 +11,10 @@ public interface IngredientMapper {
     Ingredient ingredientDtoToIngredient(IngredientRequest ingredientRequest);
 
     IngredientRequest ingredientToIngredientDto(Ingredient ingredient);
+
+    IngredientInfoDto ingredientToIngredientInfoDto(Ingredient ingredient);
+
+    Ingredient ingredientInfoDtoToIngredient(IngredientInfoDto ingredientInfoDto);
 
     List<IngredientRequest> toIngredients(List<Ingredient> ingredient);
 

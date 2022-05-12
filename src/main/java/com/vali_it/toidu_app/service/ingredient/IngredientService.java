@@ -6,6 +6,8 @@ import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientMapper;
 import com.vali_it.toidu_app.domain.ingredient.ingredient.IngredientRepository;
 import com.vali_it.toidu_app.domain.ingredient.ingredientiningredientgroup.IngredientInIngredientGroupService;
 import com.vali_it.toidu_app.service.ingredient.IngredientRequest;
+import com.vali_it.toidu_app.service.measure.AllowedMeasureUnitResponse;
+import com.vali_it.toidu_app.service.measure.AllowedUnitService;
 import com.vali_it.toidu_app.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,8 @@ public class IngredientService {
     @Resource
     private ValidationService validationService;
 
-
+    @Resource
+    private AllowedUnitService allowedUnitService;
 
     public List<IngredientRequest> getAllIngredients() {
         List<Ingredient> ingredients = ingredientRepository.findAll();
@@ -47,6 +50,14 @@ public class IngredientService {
     public IngredientRequest getIngredientById(Integer id) {
         Ingredient ingredient = ingredientRepository.getById(id);
         return ingredientMapper.ingredientToIngredientDto(ingredient);
+    }
+
+    public IngredientInfoDto getIngredientInfoById(Integer id) {
+        Ingredient ingredient = ingredientRepository.getById(id);
+        IngredientInfoDto ingredientInfoDto = ingredientMapper.ingredientToIngredientInfoDto(ingredient);
+        AllowedMeasureUnitResponse allowedMeasureUnit = allowedUnitService.getFirstMeasureUnitByIngredientId(id);
+        ingredientInfoDto.setMeasureUnitId(allowedMeasureUnit.getMeasureUnitId());
+        return ingredientInfoDto;
     }
 
     public void removeIngredientById(Integer id) {
