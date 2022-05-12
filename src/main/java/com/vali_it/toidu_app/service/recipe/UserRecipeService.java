@@ -59,4 +59,9 @@ public class UserRecipeService {
         List<RecipeIngredient> recipeIngredientList =  recipeIngredientService.findRecipeComponents(recipeId);
         return recipeIngredientMapper.recipeToDTOs(recipeIngredientList);
     }
+
+    public List<UserRecipeNameInquiry> findAllRecipes() {
+        List<Recipe> recipes = recipeRepository.findAll();
+        return recipeMapper.recipesToDtos(recipes);
+    }
 }

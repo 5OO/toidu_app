@@ -44,4 +44,10 @@ public class UserRecipeController {
     public List<UserRecipeComponentRequest> findRecipeComponents(@RequestParam Integer recipeId) {
         return userRecipeService.findRecipeComponents(recipeId);
     }
+
+    @GetMapping("/all")
+    @Operation(summary = "leiame kõik saadaolevad retseptid")
+    public List<UserRecipeNameInquiry> findAllRecipes() {
+        return userRecipeService.findAllRecipes();
+    }
 }
