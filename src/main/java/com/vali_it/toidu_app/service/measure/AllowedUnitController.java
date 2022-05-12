@@ -35,11 +35,11 @@ public class AllowedUnitController {
         return allowedUnitService.getMeasureUnitsByIngredientId(ingredientId);
     }
 
-    @GetMapping("/first")
-    @Operation(summary = "leiab esimese lubatud measure unity")
-    public AllowedMeasureUnitResponse getFirstMeasureUnitByIngredientId(@RequestParam Integer ingredientId) {
-        return allowedUnitService.getFirstMeasureUnitByIngredientId(ingredientId);
-    }
+//    @GetMapping("/first")
+//    @Operation(summary = "leiab esimese lubatud measure unity")
+//    public AllowedMeasureUnitResponse getFirstMeasureUnitByIngredientId(@RequestParam Integer ingredientId) {
+//        return allowedUnitService.getFirstMeasureUnitByIngredientId(ingredientId);
+//    }
 
 
     @PostMapping("/conversion")

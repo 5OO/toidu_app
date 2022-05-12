@@ -29,6 +29,12 @@ public class IngredientController {
         return ingredientService.getIngredientById(id);
     }
 
+    @GetMapping("/info")
+    @Operation(summary = "leiab ingredientsi id järgi")
+    public IngredientInfoDto getIngredientInfoById(@RequestParam Integer id) {
+        return ingredientService.getIngredientInfoById(id);
+    }
+
     @GetMapping("/find")
     @Operation(summary = "leiab andmebaasist toiduaineid (ingrediendid) osalise nime kaudu")
     public List<IngredientRequest> findIngredientIdByName(@RequestParam String name) {
