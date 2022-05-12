@@ -1,10 +1,12 @@
 package com.vali_it.toidu_app.service.measure;
 
+import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUnit;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/unit")
@@ -31,6 +33,12 @@ public class AllowedUnitController {
     @Operation(summary = "leiab measure unit id-d ingredient id kaudu")
     public List<AllowedMeasureUnitResponse> getMeasureUnitsByIngredientId(@RequestParam Integer ingredientId) {
         return allowedUnitService.getMeasureUnitsByIngredientId(ingredientId);
+    }
+
+    @GetMapping("/first")
+    @Operation(summary = "leiab esimese lubatud measure unity")
+    public AllowedMeasureUnitResponse getFirstMeasureUnitByIngredientId(@RequestParam Integer ingredientId) {
+        return allowedUnitService.getFirstMeasureUnitByIngredientId(ingredientId);
     }
 
 

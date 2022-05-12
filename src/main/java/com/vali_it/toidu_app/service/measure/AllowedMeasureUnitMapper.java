@@ -5,6 +5,7 @@ import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnitDto;
 import org.mapstruct.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AllowedMeasureUnitMapper {
@@ -13,7 +14,7 @@ public interface AllowedMeasureUnitMapper {
     @Mapping(target = "name", source = "measureUnit.name")
     MeasureUnitDto allowedMeasureUnitsToMeasureUnits(AllowedMeasureUnit allowedMeasureUnit);
 
-    AllowedMeasureUnit allowedMeasureUnitDtoToAllowedMeasureUnit(AllowedMeasureUnitDto allowedMeasureUnitDto);
+//    AllowedMeasureUnitResponse allowedMeasureUnitDtoToAllowedMeasureUnit(Optional allowedMeasureUnitDto);
 
 
     List<AllowedMeasureUnitDto> toEntities(List<AllowedMeasureUnit> allowedMeasureUnit);
