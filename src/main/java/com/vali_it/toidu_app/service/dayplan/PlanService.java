@@ -62,24 +62,13 @@ public class PlanService {
 
     public DetailedDayPlanResponse getTodaysDetailedDayPlan(Integer userId) {
         DayPlan dayPlan = dayPlanService.getValidDayPlan(userId);
-
-        // TODO: 06.05.2022 energy
-        Integer dayPlanId = dayPlan.getId();
-        List<PlannedItem> plannedIngredients = getPlannedIngredients(dayPlanId);
-        // TODO: 06.05.2022 energy
-        List<PlannedItem> plannedRecipes = getPlannedRecipes(dayPlanId);
-
-        List<PlannedItem> plannedItems = createPlannedItems(plannedIngredients, plannedRecipes);
+        return getDetailedDayPlanResponse(dayPlan);
+    }
 
 
-        DetailedDayPlanResponse response = new DetailedDayPlanResponse();
-        response.setDayPlanId(dayPlanId);
-        response.setDayPlanDescription(dayPlan.getDescription());
-        response.setDayPlanDate(dayPlan.getDateAdded());
-        response.setPlannedItems(plannedItems);
-
-
-        return response;
+    public DetailedDayPlanResponse getDetailedDayPlanByDayPlanId(Integer dayPlanId) {
+        DayPlan dayPlan = dayPlanService.getDayPlan(dayPlanId);
+        return getDetailedDayPlanResponse(dayPlan);
     }
 
     private List<PlannedItem> createPlannedItems(List<PlannedItem> plannedIngredients, List<PlannedItem> plannedRecipes) {
@@ -105,5 +94,21 @@ public class PlanService {
         } else {
             ingredientPlanService.deleteItemFromDayPlan(itemId);
         }
+    }
+    private DetailedDayPlanResponse getDetailedDayPlanResponse(DayPlan dayPlan) {
+        Integer dayPlanId = dayPlan.getId();
+        List<PlannedItem> plannedIngredients = getPlannedIngredients(dayPlanId);
+        // TODO: 06.05.2022 energy
+        List<PlannedItem> plannedRecipes = getPlannedRecipes(dayPlanId);
+
+        List<PlannedItem> plannedItems = createPlannedItems(plannedIngredients, plannedRecipes);
+
+
+        DetailedDayPlanResponse response = new DetailedDayPlanResponse();
+        response.setDayPlanId(dayPlanId);
+        response.setDayPlanDescription(dayPlan.getDescription());
+        response.setDayPlanDate(dayPlan.getDateAdded());
+        response.setPlannedItems(plannedItems);
+        return response;
     }
 }

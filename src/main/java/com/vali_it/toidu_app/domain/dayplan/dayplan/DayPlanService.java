@@ -42,11 +42,12 @@ public class DayPlanService {
 
     public DayPlan getValidDayPlan(Integer userId) {
         Optional<DayPlan> dayPlan = dayPlanRepository.findDayPlan(userId, LocalDate.now());
-
         validationService.validDayPlanExits(dayPlan);
-
         return dayPlan.get();
     }
 
 
+    public DayPlan getDayPlan(Integer dayPlanId) {
+        return dayPlanRepository.getById(dayPlanId);
+    }
 }
