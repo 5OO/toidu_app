@@ -11,6 +11,7 @@ import java.util.List;
 public interface PlanRecipeMapper {
 
     @Mapping(target = "itemId", source = "id")
+    @Mapping(target = "recipeId", source = "recipe.id")
     @Mapping(target = "itemName", source = "recipe.name")
     @Mapping(target = "isRecipe", constant = "true")
     @Mapping(target = "quantity", constant = "1")

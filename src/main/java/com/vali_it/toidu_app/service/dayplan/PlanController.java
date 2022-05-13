@@ -2,15 +2,12 @@ package com.vali_it.toidu_app.service.dayplan;
 
 import com.vali_it.toidu_app.domain.dayplan.dayplan.DayPlanDto;
 import com.vali_it.toidu_app.domain.dayplan.ingredientplan.IngredientPlanService;
-import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
-import com.vali_it.toidu_app.domain.measure.measureunit.MeasureUnit;
 import com.vali_it.toidu_app.service.measure.CalculatorRequest;
 import com.vali_it.toidu_app.service.measure.CalculatorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController

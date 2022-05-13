@@ -14,9 +14,11 @@ public interface IngredientPlanMapper {
 
 
     @Mapping(target = "itemId", source = "id")
+    @Mapping(target = "ingredientId", source = "ingredient.id")
     @Mapping(target = "itemName", source = "ingredient.name")
     @Mapping(target = "isRecipe", constant = "false")
     @Mapping(target = "quantity", source = "servingSize")
+    @Mapping(target = "measureUnitId", source = "measureUnit.id")
     @Mapping(target = "measureUnitName", source = "measureUnit.name")
     PlannedItem toPlannedItem(IngredientPlan ingredient);
 

@@ -10,9 +10,15 @@ import com.vali_it.toidu_app.domain.dayplan.ingredientplan.IngredientPlanService
 import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipe;
 import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipeMapper;
 import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipeService;
+import com.vali_it.toidu_app.service.measure.CalculatorRequest;
+import com.vali_it.toidu_app.service.measure.CalculatorResponse;
+import com.vali_it.toidu_app.service.measure.CalculatorService;
+import com.vali_it.toidu_app.service.recipe.UserRecipeComponentRequest;
+import com.vali_it.toidu_app.service.recipe.UserRecipeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +39,16 @@ public class PlanService {
     private PlanRecipeService planRecipeService;
 
     @Resource
+    private UserRecipeService userRecipeService;
+
+    @Resource
     private PlanRecipeMapper planRecipeMapper;
 
     @Resource
     private IngredientPlanMapper ingredientPlanMapper;
+
+    @Resource
+    private CalculatorService calculatorService;
 
     public PlanResponse createNewDayPlan(PlanRequest planRequest) {
         DayPlan dayPlan = dayPlanService.addNewDayPlan(planRequest);
@@ -71,6 +83,15 @@ public class PlanService {
         return getDetailedDayPlanResponse(dayPlan);
     }
 
+
+    public void deleteItemFromDayPlan(Integer itemId, Boolean isRecipe) {
+        if (isRecipe) {
+            planRecipeService.deleteItemFromDayPlan(itemId);
+        } else {
+            ingredientPlanService.deleteItemFromDayPlan(itemId);
+        }
+    }
+
     private List<PlannedItem> createPlannedItems(List<PlannedItem> plannedIngredients, List<PlannedItem> plannedRecipes) {
         List<PlannedItem> result = new ArrayList<>();
         result.addAll(plannedIngredients);
@@ -80,21 +101,48 @@ public class PlanService {
 
     private List<PlannedItem> getPlannedIngredients(Integer userId) {
         List<IngredientPlan> plannedIngredients = ingredientPlanService.getPlannedIngredients(userId);
-        return ingredientPlanMapper.toPlannedItems(plannedIngredients);
+        List<PlannedItem> plannedItems = ingredientPlanMapper.toPlannedItems(plannedIngredients);
+        getAndSetMacros(plannedItems);
+        return plannedItems;
+    }
+
+    private void getAndSetMacros(List<PlannedItem> plannedItems) {
+        for (PlannedItem item : plannedItems) {
+            if (!item.getIsRecipe()) {
+                CalculatorRequest calculatorRequest = new CalculatorRequest();
+                calculatorRequest.setIngredientId(item.getIngredientId());
+                calculatorRequest.setMeasureUnitId(item.getMeasureUnitId());
+                calculatorRequest.setQuantity(item.getQuantity());
+                CalculatorResponse calculatorResponse = calculatorService.conversionCalculation(calculatorRequest);
+                item.setEnergy(calculatorResponse.getEnergy());
+            }
+        }
     }
 
     private List<PlannedItem> getPlannedRecipes(Integer userId) {
         List<PlanRecipe> plannedRecipes = planRecipeService.getPlannedRecipes(userId);
-        return planRecipeMapper.toPlannedItems(plannedRecipes);
+        List<PlannedItem> plannedItems = planRecipeMapper.toPlannedItems(plannedRecipes);
+        getAndSetEnergy(plannedItems);
+        return plannedItems;
     }
 
-    public void deleteItemFromDayPlan(Integer itemId, Boolean isRecipe) {
-        if (isRecipe) {
-            planRecipeService.deleteItemFromDayPlan(itemId);
-        } else {
-            ingredientPlanService.deleteItemFromDayPlan(itemId);
+    private void getAndSetEnergy(List<PlannedItem> plannedItems) {
+        for (PlannedItem item : plannedItems) {
+            if (item.getIsRecipe()) {
+                item.setEnergy(getTotalEnergy(item));
+            }
         }
     }
+
+    private BigDecimal getTotalEnergy(PlannedItem item) {
+        BigDecimal totalEnergy = new BigDecimal(0);
+        List<UserRecipeComponentRequest> recipeComponents = userRecipeService.findRecipeComponents(item.getRecipeId());
+        for (UserRecipeComponentRequest component : recipeComponents) {
+            totalEnergy = totalEnergy.add(component.getEnergy());
+        }
+        return totalEnergy;
+    }
+
     private DetailedDayPlanResponse getDetailedDayPlanResponse(DayPlan dayPlan) {
         Integer dayPlanId = dayPlan.getId();
         List<PlannedItem> plannedIngredients = getPlannedIngredients(dayPlanId);
