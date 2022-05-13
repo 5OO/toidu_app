@@ -40,8 +40,16 @@ public class UserRecipeController {
     }
 
     @GetMapping("/info")
-    @Operation(summary = "leiame retsepti ja kuvame selle koostiosade (toiduainete/ingredient) loetelu koos energiaga")
+    @Operation(summary = "leiame ja kuvame kasutaja päevaplaani retsepti koostiosade sisu (toiduainete/ingredient  loetelu koos energiaga) ")
     public List<UserRecipeComponentRequest> findRecipeComponents(@RequestParam Integer recipeId) {
         return userRecipeService.findRecipeComponents(recipeId);
     }
+
+    @GetMapping("/all")
+    @Operation(summary = "leiame kõik süsteemis saadaolevad retseptid")
+    public List<UserRecipeNameInquiry> findAllRecipes() {
+        return userRecipeService.findAllRecipes();
+    }
+
+
 }

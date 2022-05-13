@@ -52,9 +52,15 @@ public class PlanController {
     }
 
     @GetMapping
-    @Operation(summary = "Kuvab kasjutaja tänast päevaplaani")
+    @Operation(summary = "Kuvab kasjutaja tänast päevaplaani userId järgi")
     public DetailedDayPlanResponse getTodaysDetailedDayPlan(@RequestParam Integer userId) {
         return planService.getTodaysDetailedDayPlan(userId);
+    }
+
+    @GetMapping("/dayplan")
+    @Operation(summary = "Kuvab kasjutaja päevaplaani dayPlanId järgi")
+    public DetailedDayPlanResponse getDetailedDayPlanByDayPlanId(@RequestParam Integer dayPlanId) {
+        return planService.getDetailedDayPlanByDayPlanId(dayPlanId);
     }
 
     @PostMapping("/calc")
