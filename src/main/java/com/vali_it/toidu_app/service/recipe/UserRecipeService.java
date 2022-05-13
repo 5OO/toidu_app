@@ -8,6 +8,7 @@ import com.vali_it.toidu_app.domain.recipe.recipe.RecipeService;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredient;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientMapper;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientService;
+import com.vali_it.toidu_app.service.measure.CalculatorService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,6 +34,8 @@ public class UserRecipeService {
 
     @Resource
     private RecipeMapper recipeMapper;
+    @Resource
+    private CalculatorService calculatorService;
 
     public UserRecipeResponse createRecipe(UserRecipeRequest userRecipeRequest) {
         return recipeService.addNewRecipe(userRecipeRequest);

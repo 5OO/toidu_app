@@ -14,16 +14,11 @@ public interface AllowedMeasureUnitMapper {
     @Mapping(target = "name", source = "measureUnit.name")
     MeasureUnitDto allowedMeasureUnitsToMeasureUnits(AllowedMeasureUnit allowedMeasureUnit);
 
-//    AllowedMeasureUnitResponse allowedMeasureUnitDtoToAllowedMeasureUnit(Optional allowedMeasureUnitDto);
-
 
     List<AllowedMeasureUnitDto> toEntities(List<AllowedMeasureUnit> allowedMeasureUnit);
 
     List<AllowedMeasureUnitResponse> toList(List<AllowedMeasureUnit> allowedMeasureUnits);
 
-//    List<MeasureUnitDto> allowedMeasureUnitsToMeasureUnits(List<AllowedMeasureUnit> allowedMeasureUnits);
-
-//    UnitMultiplierResponse unitMultiplierDto(AllowedMeasureUnit allowedMeasureUnit);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateAllowedMeasureUnitFromAllowedMeasureUnitDto(AllowedMeasureUnitDto allowedMeasureUnitDto, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
@@ -38,4 +33,17 @@ public interface AllowedMeasureUnitMapper {
     @InheritConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateAllowedMeasureUnitFromAllowedMeasureUnitDto1(AllowedMeasureUnitResponse allowedMeasureUnitResponse, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
+
+    @Mapping(source = "ingredientId", target = "ingredient.id")
+    @Mapping(source = "measureUnitId", target = "measureUnit.id")
+    AllowedMeasureUnit allowedMeasureUnitDto1ToAllowedMeasureUnit1(AllowedMeasureUnitDto1 allowedMeasureUnitDto1);
+
+    List<AllowedMeasureUnit> dtosToEntities(List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s);
+
+    @InheritInverseConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit1")
+    AllowedMeasureUnitDto1 allowedMeasureUnitToAllowedMeasureUnitDto11(AllowedMeasureUnit allowedMeasureUnit);
+
+    @InheritConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit1")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateAllowedMeasureUnitFromAllowedMeasureUnitDto11(AllowedMeasureUnitDto1 allowedMeasureUnitDto1, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
 }

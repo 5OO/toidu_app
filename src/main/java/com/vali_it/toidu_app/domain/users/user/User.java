@@ -1,9 +1,13 @@
 package com.vali_it.toidu_app.domain.users.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "user", schema = "toidu_app")

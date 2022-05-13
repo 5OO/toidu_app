@@ -7,6 +7,7 @@ import com.vali_it.toidu_app.domain.users.contact.ContactService;
 import com.vali_it.toidu_app.domain.users.user.User;
 import com.vali_it.toidu_app.domain.users.user.UserRepository;
 import com.vali_it.toidu_app.domain.users.user.UserService;
+import com.vali_it.toidu_app.domain.users.userrole.UserRole;
 import com.vali_it.toidu_app.domain.users.userrole.UserRoleService;
 import com.vali_it.toidu_app.service.profile.ContactDto;
 import com.vali_it.toidu_app.service.profile.UserIdDto;
@@ -47,6 +48,7 @@ public class RegisterService {
     public RegisterResponse registerNewCustomer(RegisterRequest request) {
         User user = userService.addNewUser(request);
         contactService.addNewContact(user, request);
+//        userRoleService.addNewUserRole(user.getId());
         return new RegisterResponse(user.getId());
     }
 

@@ -10,13 +10,13 @@ import javax.annotation.Resource;
 public class CalculatorController {
 
     @Resource
-    private Calculator calculator;
+    private CalculatorService calculatorService;
 
 
     @PostMapping("/conversion")
     @Operation(summary = "arvutus")
     public CalculatorResponse conversionCalculation(@RequestBody CalculatorRequest calculatorRequest) {
-        return calculator.conversionCalculation(calculatorRequest);
+        return calculatorService.conversionCalculation(calculatorRequest);
     }
 
 

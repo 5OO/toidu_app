@@ -21,4 +21,5 @@ public interface AllowedMeasureUnitRepository extends JpaRepository<AllowedMeasu
 
 
 
+
 }

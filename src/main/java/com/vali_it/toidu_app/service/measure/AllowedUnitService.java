@@ -5,6 +5,7 @@ import com.vali_it.toidu_app.domain.measure.allowedmeasureunit.AllowedMeasureUni
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,23 +16,19 @@ public class AllowedUnitService {
     private AllowedMeasureUnitMapper allowedMeasureUnitMapper;
     @Resource
     private AllowedMeasureUnitRepository allowedMeasureUnitRepository;
-    @Resource
-    private UnitMultiplierResponse unitMultiplierResponse;
 
-
-
-//Konvertimis kordaja kätte saamine ingredientId ja measureUnitId kaudu
+    //Konvertimis kordaja kätte saamine ingredientId ja measureUnitId kaudu
 //    Response JSON
 //    {
 //        "conversionMultiplier": 1.025
 //    }
-    public UnitMultiplierResponse getConversionMultiplier(AllowedUnitRequest request) {
-        AllowedMeasureUnit conversionMultiplier =
-                allowedMeasureUnitRepository.findMultiplier(request.getIngredientId(), request.getMeasureUnitId()); //otsib repositorist
-        unitMultiplierResponse.setConversionMultiplier(conversionMultiplier.getConversionMultiplier()); //setib UnitMultiplierResponses olevale conversionMultiplierile eelnevalt realt saadud väärtuse
-        return unitMultiplierResponse;
+    public BigDecimal getConversionMultiplier(Integer ingredientId, Integer measureUnitId) {
+        return allowedMeasureUnitRepository.findMultiplier(ingredientId, measureUnitId).getConversionMultiplier();
     }
 
+    //
+//    private Integer ingredientId;
+//    private Integer measureUnitId;
     //Otsib ingredientId järgi sellele vastavad mõõtühikud ja nende id
     // Response JSON
 //    {
@@ -52,5 +49,10 @@ public class AllowedUnitService {
         response.setMeasureUnitId(firstAllowedMeasureUnit.get().getMeasureUnit().getId());
         response.setMeasureUnitName(firstAllowedMeasureUnit.get().getMeasureUnit().getName());
         return response;
+    }
+
+    public void addAllowedMeasureUnits(List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
+        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitMapper.dtosToEntities(allowedMeasureUnitDto1s);
+        allowedMeasureUnitRepository.saveAll(allowedMeasureUnits);
     }
 }

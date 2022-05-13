@@ -10,5 +10,9 @@ public class UserRecipeComponentRequest {
     private String ingredientName;
     private Integer quantity;
     private String measureUnitName;
+    private Integer measureUnitId;
     private BigDecimal energy;
+    private BigDecimal carbs;
+    private BigDecimal fat;
+    private BigDecimal protein;
 }
