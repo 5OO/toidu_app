@@ -51,8 +51,13 @@ public class AllowedUnitService {
         return response;
     }
 
-    public void addAllowedMeasureUnits(List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
-        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitMapper.dtosToEntities(allowedMeasureUnitDto1s);
-        allowedMeasureUnitRepository.saveAll(allowedMeasureUnits);
+    public void addAllowedMeasureUnits(AllowedMeasureUnitDto1 allowedMeasureUnitDto1) {
+        AllowedMeasureUnit allowedMeasureUnit = allowedMeasureUnitMapper.allowedMeasureUnitDto1ToAllowedMeasureUnit1(allowedMeasureUnitDto1);
+        allowedMeasureUnitRepository.save(allowedMeasureUnit);
     }
+
+//    public void addAllowedMeasureUnits(List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
+//        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitMapper.dtosToEntities(allowedMeasureUnitDto1s);
+//        allowedMeasureUnitRepository.saveAll(allowedMeasureUnits);
+//    }
 }

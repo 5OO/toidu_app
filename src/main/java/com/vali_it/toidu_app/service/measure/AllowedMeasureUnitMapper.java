@@ -22,17 +22,17 @@ public interface AllowedMeasureUnitMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateAllowedMeasureUnitFromAllowedMeasureUnitDto(AllowedMeasureUnitDto allowedMeasureUnitDto, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
+//
+//    @Mapping(source = "measureUnitId", target = "measureUnit.id")
+//    @Mapping(source = "measureUnitName", target = "measureUnit.name")
+//    AllowedMeasureUnit allowedMeasureUnitDto1ToAllowedMeasureUnit(AllowedMeasureUnitDto1 allowedMeasureUnitDto1);
 
-    @Mapping(source = "measureUnitId", target = "measureUnit.id")
-    @Mapping(source = "measureUnitName", target = "measureUnit.name")
-    AllowedMeasureUnit allowedMeasureUnitDto1ToAllowedMeasureUnit(AllowedMeasureUnitResponse allowedMeasureUnitResponse);
-
-    @InheritInverseConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
-    AllowedMeasureUnitResponse allowedMeasureUnitToAllowedMeasureUnitDto1(AllowedMeasureUnit allowedMeasureUnit);
-
-    @InheritConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateAllowedMeasureUnitFromAllowedMeasureUnitDto1(AllowedMeasureUnitResponse allowedMeasureUnitResponse, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
+//    @InheritInverseConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
+//    AllowedMeasureUnitResponse allowedMeasureUnitToAllowedMeasureUnitDto1(AllowedMeasureUnit allowedMeasureUnit);
+//
+//    @InheritConfiguration(name = "allowedMeasureUnitDto1ToAllowedMeasureUnit")
+//    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+//    void updateAllowedMeasureUnitFromAllowedMeasureUnitDto1(AllowedMeasureUnitResponse allowedMeasureUnitResponse, @MappingTarget AllowedMeasureUnit allowedMeasureUnit);
 
     @Mapping(source = "ingredientId", target = "ingredient.id")
     @Mapping(source = "measureUnitId", target = "measureUnit.id")

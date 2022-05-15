@@ -22,16 +22,16 @@ public class AllowedUnitController {
         return allowedUnitService.getMeasureUnitsByIngredientId(ingredientId);
     }
 
-//    @PostMapping("/conversion")
-//    @Operation(summary = "leiab conversionmultiplieri id kaudu")
-//    public UnitMultiplierResponse getConversionMultiplier(@RequestBody AllowedUnitRequest request) {
-//
-//        return allowedUnitService.getConversionMultiplier(request);
-//    }
-
     @PostMapping("/measureunits")
     @Operation(summary = "Lisame lubatud measure unitsid ingredientile")
-    public void addAllowedMeasureUnits(@RequestBody List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
-        allowedUnitService.addAllowedMeasureUnits(allowedMeasureUnitDto1s);
+    public void addAllowedMeasureUnits(@RequestBody AllowedMeasureUnitDto1 allowedMeasureUnitDto1) {
+        allowedUnitService.addAllowedMeasureUnits(allowedMeasureUnitDto1);
     }
+
+
+//    @PostMapping("/measureunits")
+//    @Operation(summary = "Lisame lubatud measure unitsid ingredientile")
+//    public void addAllowedMeasureUnits(@RequestBody List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
+//        allowedUnitService.addAllowedMeasureUnits(allowedMeasureUnitDto1s);
+//    }
 }
