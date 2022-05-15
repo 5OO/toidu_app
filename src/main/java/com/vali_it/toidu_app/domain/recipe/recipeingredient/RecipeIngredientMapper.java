@@ -17,6 +17,10 @@ public interface RecipeIngredientMapper {
     @Mapping(target = "ingredientName", source = "ingredient.name")
     @Mapping(target = "measureUnitName", source = "measureUnit.name")
     @Mapping(target = "measureUnitId", source = "measureUnit.id")
+    @Mapping(target = "energy", source = "ingredient.energy")
+    @Mapping(target = "carbs", source = "ingredient.carbs")
+    @Mapping(target = "fat", source = "ingredient.fat")
+    @Mapping(target = "protein", source = "ingredient.protein")
    UserRecipeComponentRequest recipeToDTOs(RecipeIngredient recipeIngredientList);
 
    List<UserRecipeComponentRequest> recipeToDTOs(List<RecipeIngredient> recipeIngredientList);

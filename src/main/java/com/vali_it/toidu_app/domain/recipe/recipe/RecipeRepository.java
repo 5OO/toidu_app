@@ -5,10 +5,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
     @Query("select r from Recipe r where upper(r.name) like upper(concat('%', ?1, '%'))")
     List<Recipe> findByName(String name);
+
+
 }

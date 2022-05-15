@@ -38,6 +38,17 @@ public class UserRecipeController {
         List<UserRecipeNameInquiry> recipeByString = userRecipeService.findRecipeByString(name);
         return recipeByString;
     }
+    @GetMapping("/id")
+    @Operation(summary = "leiame retsepti Id järgi")
+    public UserRecipeRequest findRecipeById(@RequestParam Integer recipeId) {
+        return userRecipeService.findRecipeById(recipeId);
+    }
+
+    @GetMapping("/id-info")
+    @Operation(summary = "leiame retsepti Id järgi selle koostisosad")
+    public  List<UserRecipeComponentRequest> findRecipeIngredientsById(@RequestParam Integer recipeId) {
+        return userRecipeService.findRecipeIngredientsById(recipeId);
+    }
 
     @GetMapping("/info")
     @Operation(summary = "leiame ja kuvame kasutaja päevaplaani retsepti koostiosade sisu (toiduainete/ingredient  loetelu koos energiaga) ")
@@ -49,6 +60,11 @@ public class UserRecipeController {
     @Operation(summary = "leiame kõik süsteemis saadaolevad retseptid")
     public List<UserRecipeNameInquiry> findAllRecipes() {
         return userRecipeService.findAllRecipes();
+    }
+    @DeleteMapping ("/delete")
+    @Operation(summary = "kustutame retseptist ingredienti")
+    public void deleteIngredientFromRecipe(@RequestParam  Integer recipeId, @RequestParam Integer ingredientId) {
+        userRecipeService.deleteIngredientFromRecipe(recipeId,ingredientId);
     }
 
 

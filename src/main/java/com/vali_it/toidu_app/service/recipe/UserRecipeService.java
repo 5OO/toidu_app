@@ -1,16 +1,19 @@
 package com.vali_it.toidu_app.service.recipe;
 
 import com.vali_it.toidu_app.domain.dayplan.planrecipe.PlanRecipeService;
+import com.vali_it.toidu_app.domain.ingredient.ingredient.Ingredient;
 import com.vali_it.toidu_app.domain.recipe.recipe.Recipe;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeMapper;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeRepository;
 import com.vali_it.toidu_app.domain.recipe.recipe.RecipeService;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredient;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientMapper;
+import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientRepository;
 import com.vali_it.toidu_app.domain.recipe.recipeingredient.RecipeIngredientService;
 import com.vali_it.toidu_app.service.measure.CalculatorRequest;
 import com.vali_it.toidu_app.service.measure.CalculatorResponse;
 import com.vali_it.toidu_app.service.measure.CalculatorService;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -37,6 +40,9 @@ public class UserRecipeService {
 
     @Resource
     private RecipeMapper recipeMapper;
+
+    @Resource
+    private RecipeIngredientRepository recipeIngredientRepository;
 
     @Resource
     private CalculatorService calculatorService;
@@ -98,5 +104,24 @@ public class UserRecipeService {
         ingerdient.setCarbs(calculatorResponse.getCarbs());
         ingerdient.setFat(calculatorResponse.getFat());
         ingerdient.setProtein(calculatorResponse.getProtein());
+    }
+
+    public UserRecipeRequest findRecipeById(Integer recipeId) {
+        Recipe result = recipeRepository.getById(recipeId);
+        return recipeMapper.recipeToRecipeDto(result);
+    }
+
+    public  List<UserRecipeComponentRequest> findRecipeIngredientsById(Integer recipeId) {
+        List<RecipeIngredient> ingredients = recipeIngredientRepository.findRecipeInfo(recipeId);
+        List<UserRecipeComponentRequest> result = recipeIngredientMapper.recipeToDTOs(ingredients);
+        return result;
+    }
+
+    public void deleteIngredientFromRecipe(Integer recipeId, Integer ingredientId) {
+        Recipe recipe = new Recipe();
+        Ingredient ingredient = new Ingredient();
+        recipe.setId(recipeId);
+        ingredient.setId(ingredientId);
+        recipeIngredientRepository.deleteByRecipeAndIngredient(recipe,ingredient);
     }
 }
