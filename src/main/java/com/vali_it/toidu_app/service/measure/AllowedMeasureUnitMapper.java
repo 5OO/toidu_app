@@ -17,6 +17,9 @@ public interface AllowedMeasureUnitMapper {
 
     List<AllowedMeasureUnitDto> toEntities(List<AllowedMeasureUnit> allowedMeasureUnit);
 
+    @Mapping(target = "measureUnitId", source = "measureUnit.id")
+    @Mapping(target = "measureUnitName", source = "measureUnit.name")
+    AllowedMeasureUnitResponse allowedMeasureUnitResponseToAllowedMeasureUnit(AllowedMeasureUnit allowedMeasureUnit);
     List<AllowedMeasureUnitResponse> toList(List<AllowedMeasureUnit> allowedMeasureUnits);
 
 
