@@ -56,8 +56,4 @@ public class AllowedUnitService {
         allowedMeasureUnitRepository.save(allowedMeasureUnit);
     }
 
-//    public void addAllowedMeasureUnits(List<AllowedMeasureUnitDto1> allowedMeasureUnitDto1s) {
-//        List<AllowedMeasureUnit> allowedMeasureUnits = allowedMeasureUnitMapper.dtosToEntities(allowedMeasureUnitDto1s);
-//        allowedMeasureUnitRepository.saveAll(allowedMeasureUnits);
-//    }
 }
